@@ -1,0 +1,3 @@
+[submodule "meshes"]
+	path = meshes
+	url = https://github.com/adityakamath/akros_3d_assets
