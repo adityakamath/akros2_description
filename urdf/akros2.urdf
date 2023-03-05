@@ -4,28 +4,34 @@
     
 <!-- **** COLORS **** -->
 
-<material name="black">
-    <color rgba="0 0 0 1"/>
+<material name="FlatBlack">
+    <color rgba="0.25 0.25 0.25 1"/>
 </material>
-<material name="white">
+<material name="DarkGrey">
+    <color rgba="0.5 0.5 0.5 1"/>
+</material>
+<material name="Grey">
+    <color rgba="0.75 0.75 0.75 1"/>
+</material>
+<material name="White">
      <color rgba="1 1 1 1"/>
 </material>
     
 <!-- **** LINKS **** -->
 
-<!-- NAVIGATION MODULE (BASE_LINK) -->
+<!-- BASE_LINK -->
 <link name="base_link">
   <visual>
     <origin xyz="0 0 0" rpy="0 0 0" />
     <geometry>
-      <mesh filename="package://akros2_description/meshes/navigation_module.stl" />
+      <mesh filename="package://akros2_description/meshes/base_module.stl" />
     </geometry>
-    <material name="black"/>
+   <material name="White"/>
   </visual>
   <collision>
-    <origin xyz="0 0 0" rpy="0 0 0" />
+    <origin xyz="0 0 0.0278" rpy="0 0 0" />
     <geometry>
-      <box size='0.21 0.15 0.02'/>
+      <box size='0.21 0.15 0.045'/>
     </geometry>
   </collision>
 </link>
@@ -34,9 +40,39 @@
 <link name="base_link_inertial">
   <inertial>
     <origin xyz="0 0 0" rpy="0 0 0" />
+    <mass value="1.0"/>
+    <inertia ixx="0.015" iyy="0.0375" izz="0.0375" ixy="0" ixz="0" iyz="0"/>
+  </inertial>
+</link>
+    
+<link name="base_footprint">
+  <collision>
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <geometry>
+      <box size='0.21 0.24 0.18'/>
+    </geometry>
+  </collision>
+</link>
+
+<!-- NAV_LINK -->
+<link name="nav_link">
+  <inertial>
     <mass value="0.001" />
     <inertia ixx="0.01" ixy="0.01" ixz="0.01" iyy="0.01" iyz="0.01" izz="0.01" />
   </inertial>
+  <visual>
+    <origin xyz="0 0 -0.099" rpy="0 0 0" />
+    <geometry>
+      <mesh filename="package://akros2_description/meshes/navigation_module.stl" />
+    </geometry>
+    <material name="DarkGrey"/>
+  </visual>
+  <collision>
+    <origin xyz="0 0 -0.099" rpy="0 0 0" />
+    <geometry>
+      <box size='0.21 0.15 0.099'/>
+    </geometry>
+  </collision>
 </link>
 
 <!-- LD06 LASER_LINK -->
@@ -47,20 +83,20 @@
     <inertia ixx="0.01" ixy="0.01" ixz="0.01" iyy="0.01" iyz="0.01" izz="0.01" />
   </inertial>
   <visual>
-    <origin xyz="0 0 0" rpy="0 0 -1.57" />
+    <origin xyz="0 0 0" rpy="0 0 -1.5707963" />
     <geometry>
-      <mesh filename="package://akros2_description/meshes/New Lidar Mesh.stl" />
+      <mesh filename="package://akros2_description/meshes/ld06.stl" />
     </geometry>
-    <material name="black"/>
+    <material name="FlatBlack"/>
   </visual>
   <collision>
-    <origin xyz="0 0 0" rpy="0 0 -1.57" />
+    <origin xyz="0 0 0" rpy="0 0 -1.5707963" />
     <geometry>
       <mesh filename="package://akros2_description/meshes/ld06.stl" />
     </geometry>
   </collision>
 </link>
-    
+
 <!-- LASER_FRAME -->
 <link name="laser_frame"/>   
 
@@ -76,7 +112,7 @@
     <geometry>
       <mesh filename="package://akros2_description/meshes/t265.stl" />
     </geometry>
-    <material name="black"/>
+    <material name="FlatBlack"/>
   </visual>
   <collision>
     <origin xyz="0 0 0" rpy="0 0 0" />
@@ -84,29 +120,7 @@
       <box size='0.01 0.01 0.01'/>
     </geometry>
   </collision>
-</link>    
-
-<!-- BASE MODULE (BASE_FOOTPRINT) -->
-<link name="base_footprint">
-  <inertial>
-    <mass value="1.0"/>
-    <inertia ixx="0.015" iyy="0.0375" izz="0.0375" ixy="0" ixz="0" iyz="0"/>
-  </inertial>
-  <visual>
-    <origin xyz="0 0 0" rpy="0 0 0" />
-    <geometry>
-      <mesh filename="package://akros2_description/meshes/base_module.stl" />
-    </geometry>
-   <material name="white"/>
-  </visual>
-  <collision>
-    <origin xyz="0 0 0.0278" rpy="0 0 0" />
-    <geometry>
-      <box size='0.21 0.15 0.02'/>
-    </geometry>
-  </collision>
 </link>
-
 
 <!-- WHEEL LEFT FRONT -->
 <link name="wheel_lf">
@@ -119,10 +133,10 @@
     <geometry>
       <mesh filename="package://akros2_description/meshes/wheel_lf.stl" />
     </geometry>
-    <material name="black"/>
+    <material name="DarkGrey"/>
   </visual>
   <collision>
-    <origin xyz="0 0.01 0" rpy="1.57075 0 0" />
+    <origin xyz="0 0.01 0" rpy="1.5707963 0 0" />
     <geometry>
       <cylinder length="0.02" radius="0.04"/>
     </geometry>
@@ -140,10 +154,10 @@
     <geometry>
       <mesh filename="package://akros2_description/meshes/wheel_lb.stl" />
     </geometry>
-    <material name="black"/>
+    <material name="DarkGrey"/>
   </visual>
   <collision>
-    <origin xyz="0 0.01 0" rpy="1.57075 0 0" />
+    <origin xyz="0 0.01 0" rpy="1.5707963 0 0" />
     <geometry>
       <cylinder length="0.02" radius="0.04"/>
     </geometry>
@@ -161,10 +175,10 @@
     <geometry>
       <mesh filename="package://akros2_description/meshes/wheel_rf.stl" />
     </geometry>
-    <material name="black"/>
+    <material name="DarkGrey"/>
   </visual>
   <collision>
-    <origin xyz="0 -0.01 0" rpy="1.57075 0 0" />
+    <origin xyz="0 -0.01 0" rpy="1.5707963 0 0" />
     <geometry>
       <cylinder length="0.02" radius="0.04"/>
     </geometry>
@@ -182,10 +196,10 @@
     <geometry>
       <mesh filename="package://akros2_description/meshes/wheel_rb.stl" />
     </geometry>
-    <material name="black"/>
+    <material name="DarkGrey"/>
   </visual>
   <collision>
-    <origin xyz="0 -0.01 0" rpy="1.57075 0 0" />
+    <origin xyz="0 -0.01 0" rpy="1.5707963 0 0" />
     <geometry>
       <cylinder length="0.02" radius="0.04"/>
     </geometry>
@@ -199,39 +213,46 @@
 <joint name="base_inertial_fixed" type="fixed">
   <parent link="base_link"/>
   <child link="base_link_inertial"/>
-  <origin xyz="0 0 0" rpy="0 0 0"/>
+  <origin xyz="0 0 0"/>
+</joint>
+    
+<!-- BASE_FOOTPRINT TO BASE_LINK -->
+<joint name="base_footprint_fixed" type="fixed">
+  <parent link="base_link"/>
+  <child link="base_footprint"/>
+  <origin xyz="0 0 0"/>
+</joint>
+    
+<!-- NAV_LINK TO BASE_LINK -->
+<joint name="base_link_nav_fixed" type="fixed">
+  <parent link="base_link"/>
+  <child link="nav_link"/>
+  <origin xyz="0 0 0.099"/>
+  <axis xyz="0 0 0"/>
 </joint>
 
-<!-- LASER_LINK TO BASE_LINK -->
-<joint name="base_lidar_fixed" type="fixed">
-  <parent link="base_link"/>
+<!-- LASER_LINK TO NAV_LINK -->
+<joint name="nav_laser_fixed" type="fixed">
+  <parent link="nav_link"/>
   <child link="laser_link"/>
-  <origin xyz="0.0632 0 0.1145" rpy="0 0 0"/>
+  <origin xyz="0.0632 0 0.0155"/>
 </joint>
 
 <!-- LASER_FRAME TO LASER_LINK -->
 <joint name="laser_frame_fixed" type="fixed">
   <parent link="laser_link"/>
   <child link="laser_frame"/>
-  <origin xyz="0 0 0.03" rpy="0 0 0"/>
+  <origin xyz="0 0 0.0255"/>
 </joint>
 
-<!-- T265_POSE_FRAME TO BASE_LINK -->
-<joint name="base_t265_fixed" type="fixed">
-  <parent link="base_link" />
+<!-- T265_POSE_FRAME TO NAV_LINK -->
+<joint name="nav_t265_fixed" type="fixed">
+  <parent link="nav_link" />
   <child link="t265_pose_frame" />
-  <origin xyz="0.094 0 0.115" rpy="0 0 0" />
-</joint>
-    
-<!-- BASE_FOOTPRINT TO BASE_LINK -->
-<joint name="base_link_footprint_fixed" type="fixed">
-  <parent link="base_link"/>
-  <child link="base_footprint"/>
-  <origin xyz="0 0 0.0" rpy="0 0 0"/>
-  <axis xyz="0 0 0"/>
+  <origin xyz="0.094 0 0.016" rpy="0 0 0" />
 </joint>
 
-<!-- WHEEL_LF TO BASE_FOOTPRINT -->
+<!-- WHEEL_LF TO BASE_LINK -->
 <joint name="joint_lf" type="continuous">
   <parent link="base_link" />
   <child link="wheel_lf" />
@@ -249,7 +270,7 @@
   </actuator>
 </transmission>
     
-<!-- WHEEL_LB TO BASE_FOOTPRINT -->
+<!-- WHEEL_LB TO BASE_LINK -->
 <joint name="joint_lb" type="continuous">
   <parent link="base_link" />
   <child link="wheel_lb" />
@@ -267,7 +288,7 @@
   </actuator>
 </transmission>
     
-<!-- WHEEL_RF TO BASE_FOOTPRINT -->
+<!-- WHEEL_RF TO BASE_LINK -->
 <joint name="joint_rf" type="continuous">
   <parent link="base_link" />
   <child link="wheel_rf" />
@@ -285,7 +306,7 @@
   </actuator>
 </transmission>
     
-<!-- WHEEL_RB TO BASE_FOOTPRINT -->
+<!-- WHEEL_RB TO BASE_LINK -->
 <joint name="joint_rb" type="continuous">
   <parent link="base_link" />
   <child link="wheel_rb" />
@@ -307,33 +328,33 @@
 <gazebo reference="base_link">
   <material>Gazebo/White</material>
 </gazebo>
+
+<gazebo reference="nav_link">
+  <material>Gazebo/DarkGrey</material>
+</gazebo>
     
 <gazebo reference="laser_link">
-  <material>Gazebo/Black</material>
+  <material>Gazebo/FlatBlack</material>
 </gazebo>
 
 <gazebo reference="t265_pose_frame">
-  <material>Gazebo/Black</material>
-</gazebo>
-
-<gazebo reference="base_footprint">
-  <material>Gazebo/White</material>
+  <material>Gazebo/FlatBlack</material>
 </gazebo>
 
 <gazebo reference="wheel_lf">
-  <material>Gazebo/Black</material>
+  <material>Gazebo/DarkGrey</material>
 </gazebo>
     
 <gazebo reference="wheel_lb">
-  <material>Gazebo/Black</material>
+  <material>Gazebo/DarkGrey</material>
 </gazebo>
 
 <gazebo reference="wheel_rf">
-  <material>Gazebo/Black</material>
+  <material>Gazebo/DarkGrey</material>
 </gazebo>
 
 <gazebo reference="wheel_rb">
-  <material>Gazebo/Black</material>
+  <material>Gazebo/DarkGrey</material>
 </gazebo>
     
 <gazebo reference="laser_frame">
@@ -363,7 +384,7 @@
     </ray>
     <plugin name="gazebo_ros_head_ld06_controller" filename="libgazebo_ros_laser.so">
       <topicName>scan</topicName>
-      <frameName>lidar_frame</frameName>
+      <frameName>laser_frame</frameName>
     </plugin>
   </sensor>
 </gazebo>
