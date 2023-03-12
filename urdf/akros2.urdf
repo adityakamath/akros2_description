@@ -46,14 +46,7 @@
 </link>
 
 <!-- BASE_FOOTPRINT -->    
-<link name="base_footprint">
-  <collision>
-    <origin xyz="0 0 0" rpy="0 0 0" />
-    <geometry>
-      <box size='0.21 0.24 0.18'/>
-    </geometry>
-  </collision>
-</link>
+<link name="base_footprint"/>
 
 <!-- NAV_LINK -->
 <link name="nav_link">
@@ -262,15 +255,6 @@
   <child link="laser_frame"/>
   <origin xyz="0 0 0.0255"/>
 </joint>
-
-<!-- T265_POSE_FRAME TO NAV_LINK -->
-<!-- 
-<joint name="nav_t265_fixed" type="fixed">
-  <parent link="nav_link" />
-  <child link="t265_pose_frame" />
-  <origin xyz="0.094 0 0.016" rpy="0 0 0" />
-</joint>
--->
 
 <!-- WHEEL_LF TO BASE_LINK -->
 <joint name="joint_lf" type="continuous">
