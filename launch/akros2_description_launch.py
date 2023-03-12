@@ -54,8 +54,9 @@ def generate_launch_description():
             name='robot_state_publisher',
             parameters=[{'robot_description': open(urdf_file_path).read()}],
             remappings=[
-                ('/joint_states', '/joint_states' if LaunchConfiguration('micro_ros') == 'false' else ['/', LaunchConfiguration('micro_ros_ns'), '/', LaunchConfiguration('joint_state_topic')])
-            ]),
+                ('/joint_states', ['/', LaunchConfiguration('micro_ros_ns'), '/', LaunchConfiguration('joint_state_topic')])] if LaunchConfiguration('micro_ros') else []),
+#                ('/joint_states', '/joint_states' if not LaunchConfiguration('micro_ros') else ['/', LaunchConfiguration('micro_ros_ns'), '/', LaunchConfiguration('joint_state_topic')])
+#            ]),
         
         Node(
             condition=UnlessCondition(LaunchConfiguration('micro_ros')),

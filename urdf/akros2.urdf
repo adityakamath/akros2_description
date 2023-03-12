@@ -44,7 +44,8 @@
     <inertia ixx="0.015" iyy="0.0375" izz="0.0375" ixy="0" ixz="0" iyz="0"/>
   </inertial>
 </link>
-    
+
+<!-- BASE_FOOTPRINT -->    
 <link name="base_footprint">
   <collision>
     <origin xyz="0 0 0" rpy="0 0 0" />
@@ -102,11 +103,6 @@
 
 <!-- T265 TRACKING CAMERA (T265_POSE_FRAME AS WORKAROUND TO KEEP TREE CONTINUOUS)-->
 <link name="t265_pose_frame">
-  <inertial>
-    <origin xyz="0 0 0" rpy="0 0 0" />
-    <mass value="0.1" />
-    <inertia ixx="0.01" ixy="0.01" ixz="0.01" iyy="0.01" iyz="0.01" izz="0.01" />
-  </inertial>
   <visual>
     <origin xyz="0 0 0" rpy="0 0 0" />
     <geometry>
@@ -120,6 +116,15 @@
       <box size='0.01 0.01 0.01'/>
     </geometry>
   </collision>
+</link>
+    
+<!-- T265 TRACKING CAMERA (T265_POSE_INERTIAL)-->
+<link name="t265_pose_inertial">
+  <inertial>
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <mass value="0.1" />
+    <inertia ixx="0.01" ixy="0.01" ixz="0.01" iyy="0.01" iyz="0.01" izz="0.01" />
+  </inertial>
 </link>
 
 <!-- WHEEL LEFT FRONT -->
@@ -206,8 +211,21 @@
   </collision>
 </link>
 
-    
 <!-- **** JOINTS **** -->
+    
+<!-- BASE_LINK TO T265_POSE_FRAME -->
+<joint name="pose_base_fixed" type="fixed">
+  <parent link="t265_pose_frame"/>
+  <child link="base_link"/>
+  <origin xyz="-0.094 0 -0.115"/>
+</joint>
+    
+<!-- T265_POSE_INERTIAL TO T265_POSE_FRAME -->
+<joint name="pose_inertial_fixed" type="fixed">
+  <parent link="t265_pose_frame"/>
+  <child link="t265_pose_inertial"/>
+  <origin xyz="0 0 0"/>
+</joint>
     
 <!-- BASE_LINK_INERTIAL TO BASE_LINK -->
 <joint name="base_inertial_fixed" type="fixed">
@@ -224,7 +242,7 @@
 </joint>
     
 <!-- NAV_LINK TO BASE_LINK -->
-<joint name="base_link_nav_fixed" type="fixed">
+<joint name="base_nav_fixed" type="fixed">
   <parent link="base_link"/>
   <child link="nav_link"/>
   <origin xyz="0 0 0.099"/>
@@ -246,11 +264,13 @@
 </joint>
 
 <!-- T265_POSE_FRAME TO NAV_LINK -->
+<!-- 
 <joint name="nav_t265_fixed" type="fixed">
   <parent link="nav_link" />
   <child link="t265_pose_frame" />
   <origin xyz="0.094 0 0.016" rpy="0 0 0" />
 </joint>
+-->
 
 <!-- WHEEL_LF TO BASE_LINK -->
 <joint name="joint_lf" type="continuous">

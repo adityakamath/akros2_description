@@ -66,31 +66,31 @@ class MeshPublisher(object):
         self._url_wheel_rf  = self._node.get_parameter('url_wheel_rf').get_parameter_value().string_value
         self._url_wheel_rb  = self._node.get_parameter('url_wheel_rb').get_parameter_value().string_value
         
-        self._opacity = 1.0
+        self._opacity = 0.95
         
         self._nearlyBlack   = ColorRGBA()
-        self._nearlyBlack.r = 0.1
-        self._nearlyBlack.g = 0.1
-        self._nearlyBlack.b = 0.1
-        self._nearlyBlack.a = self._opacity
-        
+        self._nearlyBlack.r = 0.125
+        self._nearlyBlack.g = 0.125
+        self._nearlyBlack.b = 0.125
+        self._nearlyBlack.a = 1.0
+
         self._darkGrey   = ColorRGBA()
-        self._darkGrey.r = 0.3
-        self._darkGrey.g = 0.3
-        self._darkGrey.b = 0.3
-        self._darkGrey.a = self._opacity
+        self._darkGrey.r = 0.25
+        self._darkGrey.g = 0.25
+        self._darkGrey.b = 0.25
+        self._darkGrey.a = 1.0
         
         self._grey   = ColorRGBA()
-        self._grey.r = 0.7
-        self._grey.g = 0.7
-        self._grey.b = 0.7
-        self._grey.a = self._opacity
+        self._grey.r = 0.5
+        self._grey.g = 0.5
+        self._grey.b = 0.5
+        self._grey.a = 1.0
         
-        self._white   = ColorRGBA()
-        self._white.r = 1.0
-        self._white.g = 1.0
-        self._white.b = 1.0
-        self._white.a = self._opacity
+        self._greyTransparent   = ColorRGBA()
+        self._greyTransparent.r = 0.75
+        self._greyTransparent.g = 0.75
+        self._greyTransparent.b = 0.75
+        self._greyTransparent.a = self._opacity
         
         for i in range(self._num_markers):
             self._marker = Marker()
@@ -121,7 +121,7 @@ class MeshPublisher(object):
             if   i==0:
                 self._marker.header.frame_id = self._frame_base
                 self._marker.mesh_resource = self._url_base
-                self._marker.color = self._white
+                self._marker.color = self._greyTransparent
             elif i==1:
                 self._marker.header.frame_id = self._frame_nav
                 self._marker.mesh_resource = self._url_nav
@@ -133,7 +133,7 @@ class MeshPublisher(object):
             elif i==3:
                 self._marker.header.frame_id = self._frame_t265
                 self._marker.mesh_resource = self._url_t265
-                self._marker.color = self._nearlyBlack
+                self._marker.color = self._grey
             elif i==4:
                 self._marker.header.frame_id = self._frame_wheel_lf
                 self._marker.mesh_resource = self._url_wheel_lf
