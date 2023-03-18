@@ -31,7 +31,7 @@
   <collision>
     <origin xyz="0 0 0.0278" rpy="0 0 0" />
     <geometry>
-      <box size='0.21 0.15 0.045'/>
+      <mesh filename="package://akros2_description/meshes/base_module.stl" /> <!-- box size='0.21 0.15 0.045'/ -->
     </geometry>
   </collision>
 </link>
@@ -64,7 +64,7 @@
   <collision>
     <origin xyz="0 0 -0.099" rpy="0 0 0" />
     <geometry>
-      <box size='0.21 0.15 0.099'/>
+      <mesh filename="package://akros2_description/meshes/navigation_module.stl" /> <!-- box size='0.21 0.15 0.099'/ -->
     </geometry>
   </collision>
 </link>
@@ -106,7 +106,7 @@
   <collision>
     <origin xyz="0 0 0" rpy="0 0 0" />
     <geometry>
-      <box size='0.01 0.01 0.01'/>
+      <mesh filename="package://akros2_description/meshes/t265.stl" /> <!-- box size='0.01 0.01 0.01'/ -->
     </geometry>
   </collision>
 </link>
@@ -136,7 +136,7 @@
   <collision>
     <origin xyz="0 0.01 0" rpy="1.5707963 0 0" />
     <geometry>
-      <cylinder length="0.02" radius="0.04"/>
+      <mesh filename="package://akros2_description/meshes/wheel_lf.stl" /> <!-- cylinder length="0.02" radius="0.04"/ -->
     </geometry>
   </collision>
 </link>
@@ -157,7 +157,7 @@
   <collision>
     <origin xyz="0 0.01 0" rpy="1.5707963 0 0" />
     <geometry>
-      <cylinder length="0.02" radius="0.04"/>
+      <mesh filename="package://akros2_description/meshes/wheel_lb.stl" /> <!-- cylinder length="0.02" radius="0.04"/ -->
     </geometry>
   </collision>
 </link>
@@ -178,7 +178,7 @@
   <collision>
     <origin xyz="0 -0.01 0" rpy="1.5707963 0 0" />
     <geometry>
-      <cylinder length="0.02" radius="0.04"/>
+      <mesh filename="package://akros2_description/meshes/wheel_rf.stl" /> <!-- cylinder length="0.02" radius="0.04"/ -->
     </geometry>
   </collision>
 </link>
@@ -199,7 +199,7 @@
   <collision>
     <origin xyz="0 -0.01 0" rpy="1.5707963 0 0" />
     <geometry>
-      <cylinder length="0.02" radius="0.04"/>
+      <mesh filename="package://akros2_description/meshes/wheel_rb.stl" /> <!-- cylinder length="0.02" radius="0.04"/ -->
     </geometry>
   </collision>
 </link>
