@@ -23,7 +23,7 @@ import os
 
 def generate_launch_description():
     
-    urdf_file_path = os.path.join(get_package_share_directory('akros2_description'), 'urdf', 'akros2.urdf')
+    urdf_file_path = os.path.join(get_package_share_directory('akros2_description'), 'urdf', 'akros2.urdf.xacro')
     
     return LaunchDescription([
         DeclareLaunchArgument(
@@ -46,7 +46,7 @@ def generate_launch_description():
             default_value='true',
             description='Launches mesh publisher if set to true'),
         
-        SetEnvironmentVariable('ROBOT_DESCRIPTION', 'file://' + urdf_file_path),
+        #SetEnvironmentVariable('ROBOT_DESCRIPTION', 'file://' + urdf_file_path),
         
         Node(
             package='robot_state_publisher',

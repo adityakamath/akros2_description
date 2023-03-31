@@ -31,6 +31,7 @@
   <collision>
     <origin xyz="0 0 0.0278" rpy="0 0 0" />
     <geometry>
+      <box size="0.210 0.174 0.037"/>
       <mesh filename="package://akros2_description/meshes/base_module.dae" />
     </geometry>
   </collision>
@@ -40,7 +41,7 @@
 <link name="base_link_inertial">
   <inertial>
     <origin xyz="0 0 0" rpy="0 0 0" />
-    <mass value="1.0"/>
+    <mass value="2.0"/>
     <inertia ixx="0.015" iyy="0.0375" izz="0.0375" ixy="0" ixz="0" iyz="0"/>
   </inertial>
 </link>
@@ -51,7 +52,7 @@
 <!-- NAV_LINK -->
 <link name="nav_link">
   <inertial>
-    <mass value="0.001" />
+    <mass value="0.5" />
     <inertia ixx="0.01" ixy="0.01" ixz="0.01" iyy="0.01" iyz="0.01" izz="0.01" />
   </inertial>
   <visual>
@@ -64,6 +65,7 @@
   <collision>
     <origin xyz="0 0 -0.099" rpy="0 0 0" />
     <geometry>
+      <box size="0.2 0.154 0.037"/>
       <mesh filename="package://akros2_description/meshes/navigation_module.dae" />
     </geometry>
   </collision>
@@ -73,7 +75,7 @@
 <link name="laser_link">
   <inertial>
     <origin xyz="0 0 0" rpy="0 0 0" />
-    <mass value="0.001" />
+    <mass value="0.12" />
     <inertia ixx="0.01" ixy="0.01" ixz="0.01" iyy="0.01" iyz="0.01" izz="0.01" />
   </inertial>
   <visual>
@@ -86,7 +88,7 @@
   <collision>
     <origin xyz="0 0 0" rpy="0 0 -1.5707963" />
     <geometry>
-      <mesh filename="package://akros2_description/meshes/ld06.dae" />
+      <box size="0.038 0.0.0381 0.033"/>
     </geometry>
   </collision>
 </link>
@@ -112,7 +114,7 @@
   <collision>
     <origin xyz="0 0 0" rpy="0 0 0" />
     <geometry>
-      <mesh filename="package://akros2_description/meshes/t265.dae" />
+      <box size="0.012 0.108 0.024"/>
     </geometry>
   </collision>
 </link>
@@ -121,7 +123,7 @@
 <link name="t265_pose_inertial">
   <inertial>
     <origin xyz="0 0 0" rpy="0 0 0" />
-    <mass value="0.1" />
+    <mass value="0.055" />
     <inertia ixx="0.01" ixy="0.01" ixz="0.01" iyy="0.01" iyz="0.01" izz="0.01" />
   </inertial>
 </link>
@@ -129,7 +131,7 @@
 <!-- WHEEL LEFT FRONT -->
 <link name="wheel_lf">
   <inertial>
-    <mass value="0.1"/>
+    <mass value="0.075"/>
     <inertia ixx="5.1458e-5" iyy="5.1458e-5" izz="6.125e-5" ixy="0" ixz="0" iyz="0"/>
   </inertial>
   <visual>
@@ -142,7 +144,7 @@
   <collision>
     <origin xyz="0 0.01 0" rpy="1.5707963 0 0" />
     <geometry>
-      <cylinder length="0.035" radius="0.04"/>
+      <cylinder length="0.035" radius="0.038"/>
     </geometry>
   </collision>
 </link>
@@ -150,7 +152,7 @@
 <!-- WHEEL LEFT BACK -->
 <link name="wheel_lb">
   <inertial>
-    <mass value="0.1"/>
+    <mass value="0.075"/>
     <inertia ixx="5.1458e-5" iyy="5.1458e-5" izz="6.125e-5" ixy="0" ixz="0" iyz="0"/>
   </inertial>
   <visual>
@@ -163,7 +165,7 @@
   <collision>
     <origin xyz="0 0.01 0" rpy="1.5707963 0 0" />
     <geometry>
-      <cylinder length="0.035" radius="0.04"/>
+      <cylinder length="0.035" radius="0.038"/>
     </geometry>
   </collision>
 </link>
@@ -171,7 +173,7 @@
 <!-- WHEEL RIGHT FRONT -->
 <link name="wheel_rf">
   <inertial>
-    <mass value="0.1"/>
+    <mass value="0.075"/>
     <inertia ixx="5.1458e-5" iyy="5.1458e-5" izz="6.125e-5" ixy="0" ixz="0" iyz="0"/>
   </inertial>
   <visual>
@@ -184,7 +186,7 @@
   <collision>
     <origin xyz="0 -0.01 0" rpy="1.5707963 0 0" />
     <geometry>
-      <cylinder length="0.035" radius="0.04"/>
+      <cylinder length="0.035" radius="0.038"/>
     </geometry>
   </collision>
 </link>
@@ -192,7 +194,7 @@
 <!-- WHEEL RIGHT BACK -->
 <link name="wheel_rb">
   <inertial>
-    <mass value="0.1"/>
+    <mass value="0.075"/>
     <inertia ixx="5.1458e-5" iyy="5.1458e-5" izz="6.125e-5" ixy="0" ixz="0" iyz="0"/>
   </inertial>
   <visual>
@@ -205,7 +207,7 @@
   <collision>
     <origin xyz="0 -0.01 0" rpy="1.5707963 0 0" />
     <geometry>
-      <cylinder length="0.035" radius="0.04"/>
+      <cylinder length="0.035" radius="0.038"/>
     </geometry>
   </collision>
 </link>
