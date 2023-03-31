@@ -24,14 +24,14 @@
   <visual>
     <origin xyz="0 0 0" rpy="0 0 0" />
     <geometry>
-      <mesh filename="package://akros2_description/meshes/base_module.stl" />
+      <mesh filename="package://akros2_description/meshes/base_module.dae" />
     </geometry>
    <material name="White"/>
   </visual>
   <collision>
     <origin xyz="0 0 0.0278" rpy="0 0 0" />
     <geometry>
-      <mesh filename="package://akros2_description/meshes/base_module.stl" /> <!-- box size='0.21 0.15 0.045'/ -->
+      <mesh filename="package://akros2_description/meshes/base_module.dae" />
     </geometry>
   </collision>
 </link>
@@ -57,14 +57,14 @@
   <visual>
     <origin xyz="0 0 -0.099" rpy="0 0 0" />
     <geometry>
-      <mesh filename="package://akros2_description/meshes/navigation_module.stl" />
+      <mesh filename="package://akros2_description/meshes/navigation_module.dae" />
     </geometry>
     <material name="DarkGrey"/>
   </visual>
   <collision>
     <origin xyz="0 0 -0.099" rpy="0 0 0" />
     <geometry>
-      <mesh filename="package://akros2_description/meshes/navigation_module.stl" /> <!-- box size='0.21 0.15 0.099'/ -->
+      <mesh filename="package://akros2_description/meshes/navigation_module.dae" />
     </geometry>
   </collision>
 </link>
@@ -79,34 +79,40 @@
   <visual>
     <origin xyz="0 0 0" rpy="0 0 -1.5707963" />
     <geometry>
-      <mesh filename="package://akros2_description/meshes/ld06.stl" />
+      <mesh filename="package://akros2_description/meshes/ld06.dae" />
     </geometry>
     <material name="FlatBlack"/>
   </visual>
   <collision>
     <origin xyz="0 0 0" rpy="0 0 -1.5707963" />
     <geometry>
-      <mesh filename="package://akros2_description/meshes/ld06.stl" />
+      <mesh filename="package://akros2_description/meshes/ld06.dae" />
     </geometry>
   </collision>
 </link>
 
 <!-- LASER_FRAME -->
-<link name="laser_frame"/>   
+<link name="laser_frame"/>
+    
+<!-- MPU9250 IMU_LINK -->
+<link name="imu_link"/>
+
+<!-- IMU_FRAME -->
+<link name="imu_frame"/>  
 
 <!-- T265 TRACKING CAMERA (T265_POSE_FRAME AS WORKAROUND TO KEEP TREE CONTINUOUS)-->
 <link name="t265_pose_frame">
   <visual>
     <origin xyz="0 0 0" rpy="0 0 0" />
     <geometry>
-      <mesh filename="package://akros2_description/meshes/t265.stl" />
+      <mesh filename="package://akros2_description/meshes/t265.dae" />
     </geometry>
     <material name="FlatBlack"/>
   </visual>
   <collision>
     <origin xyz="0 0 0" rpy="0 0 0" />
     <geometry>
-      <mesh filename="package://akros2_description/meshes/t265.stl" /> <!-- box size='0.01 0.01 0.01'/ -->
+      <mesh filename="package://akros2_description/meshes/t265.dae" />
     </geometry>
   </collision>
 </link>
@@ -129,14 +135,14 @@
   <visual>
     <origin xyz="0 0 0" rpy="0 0 0" />
     <geometry>
-      <mesh filename="package://akros2_description/meshes/wheel_lf.stl" />
+      <mesh filename="package://akros2_description/meshes/wheel_lf.dae" />
     </geometry>
     <material name="DarkGrey"/>
   </visual>
   <collision>
     <origin xyz="0 0.01 0" rpy="1.5707963 0 0" />
     <geometry>
-      <mesh filename="package://akros2_description/meshes/wheel_lf.stl" /> <!-- cylinder length="0.02" radius="0.04"/ -->
+      <cylinder length="0.035" radius="0.04"/>
     </geometry>
   </collision>
 </link>
@@ -150,14 +156,14 @@
   <visual>
     <origin xyz="0 0 0" rpy="0 0 0" />
     <geometry>
-      <mesh filename="package://akros2_description/meshes/wheel_lb.stl" />
+      <mesh filename="package://akros2_description/meshes/wheel_lb.dae" />
     </geometry>
     <material name="DarkGrey"/>
   </visual>
   <collision>
     <origin xyz="0 0.01 0" rpy="1.5707963 0 0" />
     <geometry>
-      <mesh filename="package://akros2_description/meshes/wheel_lb.stl" /> <!-- cylinder length="0.02" radius="0.04"/ -->
+      <cylinder length="0.035" radius="0.04"/>
     </geometry>
   </collision>
 </link>
@@ -171,14 +177,14 @@
   <visual>
     <origin xyz="0 0 0" rpy="0 0 0" />
     <geometry>
-      <mesh filename="package://akros2_description/meshes/wheel_rf.stl" />
+      <mesh filename="package://akros2_description/meshes/wheel_rf.dae" />
     </geometry>
     <material name="DarkGrey"/>
   </visual>
   <collision>
     <origin xyz="0 -0.01 0" rpy="1.5707963 0 0" />
     <geometry>
-      <mesh filename="package://akros2_description/meshes/wheel_rf.stl" /> <!-- cylinder length="0.02" radius="0.04"/ -->
+      <cylinder length="0.035" radius="0.04"/>
     </geometry>
   </collision>
 </link>
@@ -192,14 +198,14 @@
   <visual>
     <origin xyz="0 0 0" rpy="0 0 0" />
     <geometry>
-      <mesh filename="package://akros2_description/meshes/wheel_rb.stl" />
+      <mesh filename="package://akros2_description/meshes/wheel_rb.dae" />
     </geometry>
     <material name="DarkGrey"/>
   </visual>
   <collision>
     <origin xyz="0 -0.01 0" rpy="1.5707963 0 0" />
     <geometry>
-      <mesh filename="package://akros2_description/meshes/wheel_rb.stl" /> <!-- cylinder length="0.02" radius="0.04"/ -->
+      <cylinder length="0.035" radius="0.04"/>
     </geometry>
   </collision>
 </link>
@@ -254,6 +260,20 @@
   <parent link="laser_link"/>
   <child link="laser_frame"/>
   <origin xyz="0 0 0.0255"/>
+</joint>
+    
+<!-- IMU_LINK TO BASE_LINK -->
+<joint name="imu_base_fixed" type="fixed">
+  <parent link="base_link"/>
+  <child link="imu_link"/>
+  <origin xyz="0 0 0"/>
+</joint>
+
+<!-- IMU_FRAME TO IMU_LINK -->
+<joint name="imu_frame_fixed" type="fixed">
+  <parent link="imu_link"/>
+  <child link="imu_frame"/>
+  <origin xyz="0 0 0"/>
 </joint>
 
 <!-- WHEEL_LF TO BASE_LINK -->

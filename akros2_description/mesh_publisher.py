@@ -19,12 +19,15 @@ from rclpy.node import Node
 from rclpy.time import Time
 from visualization_msgs.msg import Marker, MarkerArray
 from std_msgs.msg import ColorRGBA
+from sensor_msgs.msg import JointState
 
 class MeshPublisher(object):
     def __init__(self, node, mesh_topic='mesh_array', period=0.2):
         self._node = node
         
         self._marker_pub = self._node.create_publisher(MarkerArray, mesh_topic, 8)
+        self._js_init_pub = self._node.create_publisher(JointState, 'joint_states', 1)
+        
         self._node.create_timer(period, self.cb_timer)
         
         self._marker_array_msg = MarkerArray()
@@ -48,14 +51,14 @@ class MeshPublisher(object):
         self._frame_wheel_rf  = self._node.get_parameter('frame_wheel_rf').get_parameter_value().string_value
         self._frame_wheel_rb  = self._node.get_parameter('frame_wheel_rb').get_parameter_value().string_value
         
-        self._node.declare_parameter('url_base',      "https://raw.githubusercontent.com/adityakamath/akros_3d_assets/akros2/base_module.stl")
-        self._node.declare_parameter('url_nav',      "https://raw.githubusercontent.com/adityakamath/akros_3d_assets/akros2/navigation_module.stl")
-        self._node.declare_parameter('url_laser',     "https://raw.githubusercontent.com/adityakamath/akros_3d_assets/akros2/ld06.stl")
-        self._node.declare_parameter('url_t265',      "https://raw.githubusercontent.com/adityakamath/akros_3d_assets/akros2/t265.stl")
-        self._node.declare_parameter('url_wheel_lf',  "https://raw.githubusercontent.com/adityakamath/akros_3d_assets/akros2/wheel_lf.stl")
-        self._node.declare_parameter('url_wheel_lb',  "https://raw.githubusercontent.com/adityakamath/akros_3d_assets/akros2/wheel_lb.stl")
-        self._node.declare_parameter('url_wheel_rf',  "https://raw.githubusercontent.com/adityakamath/akros_3d_assets/akros2/wheel_rf.stl")
-        self._node.declare_parameter('url_wheel_rb',  "https://raw.githubusercontent.com/adityakamath/akros_3d_assets/akros2/wheel_rb.stl")
+        self._node.declare_parameter('url_base',      "https://raw.githubusercontent.com/adityakamath/akros_3d_assets/akros2/base_module.dae")
+        self._node.declare_parameter('url_nav',      "https://raw.githubusercontent.com/adityakamath/akros_3d_assets/akros2/navigation_module.dae")
+        self._node.declare_parameter('url_laser',     "https://raw.githubusercontent.com/adityakamath/akros_3d_assets/akros2/ld06.dae")
+        self._node.declare_parameter('url_t265',      "https://raw.githubusercontent.com/adityakamath/akros_3d_assets/akros2/t265.dae")
+        self._node.declare_parameter('url_wheel_lf',  "https://raw.githubusercontent.com/adityakamath/akros_3d_assets/akros2/wheel_lf.dae")
+        self._node.declare_parameter('url_wheel_lb',  "https://raw.githubusercontent.com/adityakamath/akros_3d_assets/akros2/wheel_lb.dae")
+        self._node.declare_parameter('url_wheel_rf',  "https://raw.githubusercontent.com/adityakamath/akros_3d_assets/akros2/wheel_rf.dae")
+        self._node.declare_parameter('url_wheel_rb',  "https://raw.githubusercontent.com/adityakamath/akros_3d_assets/akros2/wheel_rb.dae")
         
         self._url_base      = self._node.get_parameter('url_base').get_parameter_value().string_value
         self._url_nav       = self._node.get_parameter('url_nav').get_parameter_value().string_value
@@ -155,11 +158,24 @@ class MeshPublisher(object):
         
     def cb_timer(self):
         self._marker_pub.publish(self._marker_array_msg)
+        
+    def publish_joint_states(self):
+        joint_state_msg = JointState()
+        
+        joint_state_msg.header.stamp = self._node.get_clock().now().to_msg()
+        joint_state_msg.header.frame_id = self._frame_base
+        joint_state_msg.name = ['joint_lf', 'joint_rf', 'joint_lb', 'joint_rb']
+        joint_state_msg.position = [0.0, 0.0, 0.0, 0.0]
+        joint_state_msg.velocity = [0.0, 0.0, 0.0, 0.0]
+        joint_state_msg.effort = [0.0, 0.0, 0.0, 0.0]
+
+        self._js_init_pub.publish(joint_state_msg)
 
 def main():
     rclpy.init()
     node = rclpy.create_node("mesh_publisher")
-    MeshPublisher(node)
+    mesh_publisher = MeshPublisher(node)
+    mesh_publisher.publish_joint_states()
     rclpy.spin(node)
     node.destroy_node()
     rclpy.shutdown()

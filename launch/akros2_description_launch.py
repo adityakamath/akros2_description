@@ -72,7 +72,9 @@ def generate_launch_description():
             package='akros2_description',
             executable='mesh_publisher',
             name='mesh_publisher',
-        ),
+            remappings=[
+                ('/joint_states', ['/', LaunchConfiguration('micro_ros_ns'), '/', LaunchConfiguration('joint_state_topic')])
+            ]),
         
         
     ])
