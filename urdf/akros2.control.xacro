@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot name="akros2_control" xmlns:xacro="http://ros.org/wiki/xacro">
+
+<!-- WHEEL_LF TRANSMISSION -->
+<transmission name="trans_lf">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="joint_lf">
+    <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="motor_lf">
+    <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+</transmission>
+ 
+<!-- WHEEL_LB TRANSMISSION -->
+<transmission name="trans_lb">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="joint_lb">
+    <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="motor_lb">
+    <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+</transmission>
+
+<!-- WHEEL_RF TRANSMISSION -->
+<transmission name="trans_rf">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="joint_rf">
+    <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="motor_rf">
+    <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+</transmission>
+
+<!-- WHEEL_RB TRANSMISSION -->
+<transmission name="trans_rb">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="joint_rb">
+    <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="motor_rb">
+    <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+</transmission>
+    
+</robot>
