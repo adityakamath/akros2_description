@@ -15,15 +15,17 @@
 import os
 from launch import LaunchDescription
 from launch.actions import DeclareLaunchArgument, SetEnvironmentVariable
-from launch.substitutions import LaunchConfiguration, PathJoinSubstitution
-from ament_index_python.packages import get_package_share_directory
+from launch.substitutions import LaunchConfiguration, PathJoinSubstitution, Command
+from ament_index_python.packages import get_package_share_directory, get_package_share_path
 from launch_ros.actions import Node
 from launch.conditions import IfCondition, UnlessCondition
-import os
+from launch_ros.parameter_descriptions import ParameterValue
 
 def generate_launch_description():
     
-    urdf_file_path = os.path.join(get_package_share_directory('akros2_description'), 'urdf', 'akros2.urdf.xacro')
+    robot_description = ParameterValue(
+        Command(['xacro ', str(get_package_share_path('akros2_description') / 'urdf/akros2.urdf.xacro')]),
+        value_type=str)
     
     return LaunchDescription([
         DeclareLaunchArgument(
@@ -46,13 +48,11 @@ def generate_launch_description():
             default_value='true',
             description='Launches mesh publisher if set to true'),
         
-        #SetEnvironmentVariable('ROBOT_DESCRIPTION', 'file://' + urdf_file_path),
-        
         Node(
             package='robot_state_publisher',
             executable='robot_state_publisher',
             name='robot_state_publisher',
-            parameters=[{'robot_description': open(urdf_file_path).read()}],
+            parameters=[{'robot_description': robot_description}],
             remappings=[
                 ('/joint_states', ['/', LaunchConfiguration('micro_ros_ns'), '/', LaunchConfiguration('joint_state_topic')])
             ]),
@@ -75,6 +75,4 @@ def generate_launch_description():
             remappings=[
                 ('/joint_states', ['/', LaunchConfiguration('micro_ros_ns'), '/', LaunchConfiguration('joint_state_topic')])
             ]),
-        
-        
     ])
