@@ -4,14 +4,14 @@
 <xacro:include filename="$(find akros2_description)/urdf/akros2.control.xacro"/>
 <xacro:include filename="$(find akros2_description)/urdf/akros2.gazebo.xacro"/>
 
-<xacro:arg name="mesh_path" default="package://akros2_description/meshes/" />
+<xacro:arg name="mesh_path" default="package://akros2_description/meshes/" /> <!-- HTTPS URL also works here -->
 <xacro:arg name="unity" default="false" />
 <xacro:property name="mesh_path" value="$(arg mesh_path)" />
 
 <xacro:if value="$(arg unity)">
   <xacro:property name="mesh_path" value="" />
 </xacro:if>
-    
+
 <!-- **** LINKS **** -->
 
 <!-- BASE_LINK -->
@@ -132,7 +132,7 @@
     <geometry>
       <mesh filename="${mesh_path}wheel_lf.dae" />
     </geometry>
-    <material name="DarkGrey"/>
+    <material name="FlatBlack"/>
   </visual>
   <collision>
     <origin xyz="0 ${wheel_height/2} 0" rpy="${pi_by_two} 0 0" /><!-- If needed: offset = 0.01 -->
@@ -153,7 +153,7 @@
     <geometry>
       <mesh filename="${mesh_path}wheel_lb.dae" />
     </geometry>
-    <material name="DarkGrey"/>
+    <material name="FlatBlack"/>
   </visual>
   <collision>
     <origin xyz="0 ${wheel_height/2} 0" rpy="${pi_by_two} 0 0" /><!-- If needed: offset = 0.01 -->
@@ -174,7 +174,7 @@
     <geometry>
       <mesh filename="${mesh_path}wheel_rf.dae" />
     </geometry>
-    <material name="DarkGrey"/>
+    <material name="FlatBlack"/>
   </visual>
   <collision>
     <origin xyz="0 ${-1*(wheel_height/2)} 0" rpy="${pi_by_two} 0 0" /><!-- If needed: offset = 0.01 -->
@@ -195,7 +195,7 @@
     <geometry>
       <mesh filename="${mesh_path}wheel_rb.dae" />
     </geometry>
-    <material name="DarkGrey"/>
+    <material name="FlatBlack"/>
   </visual>
   <collision>
     <origin xyz="0 ${-1*(wheel_height/2)} 0" rpy="${pi_by_two} 0 0" /><!-- If needed: offset = 0.01 -->

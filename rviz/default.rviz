@@ -7,6 +7,7 @@ Panels:
         - /Global Options1
         - /Status1
         - /RobotModel1
+        - /RobotModel1/Status1
         - /TF1
         - /MarkerArray1
       Splitter Ratio: 0.5
@@ -52,7 +53,7 @@ Visualization Manager:
       Value: true
     - Alpha: 1
       Class: rviz_default_plugins/RobotModel
-      Collision Enabled: false
+      Collision Enabled: true
       Description File: ""
       Description Source: Topic
       Description Topic:
@@ -68,6 +69,70 @@ Visualization Manager:
         Expand Link Details: false
         Expand Tree: false
         Link Tree Style: Links in Alphabetic Order
+        base_footprint:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        base_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        base_link_inertial:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        imu_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        imu_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        laser_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        laser_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        nav_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        t265_pose_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        t265_pose_inertial:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        wheel_lb:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        wheel_lf:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        wheel_rb:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        wheel_rf:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
       Mass Properties:
         Inertia: false
         Mass: false
@@ -75,19 +140,69 @@ Visualization Manager:
       TF Prefix: ""
       Update Interval: 0
       Value: true
-      Visual Enabled: true
+      Visual Enabled: false
     - Class: rviz_default_plugins/TF
       Enabled: true
       Frame Timeout: 15
       Frames:
         All Enabled: true
+        base_footprint:
+          Value: true
+        base_link:
+          Value: true
+        base_link_inertial:
+          Value: true
+        imu_frame:
+          Value: true
+        imu_link:
+          Value: true
+        laser_frame:
+          Value: true
+        laser_link:
+          Value: true
+        nav_link:
+          Value: true
+        t265_pose_frame:
+          Value: true
+        t265_pose_inertial:
+          Value: true
+        wheel_lb:
+          Value: true
+        wheel_lf:
+          Value: true
+        wheel_rb:
+          Value: true
+        wheel_rf:
+          Value: true
       Marker Scale: 0.25
       Name: TF
       Show Arrows: true
       Show Axes: true
       Show Names: false
       Tree:
-        {}
+        t265_pose_frame:
+          base_link:
+            base_footprint:
+              {}
+            base_link_inertial:
+              {}
+            imu_link:
+              imu_frame:
+                {}
+            nav_link:
+              laser_link:
+                laser_frame:
+                  {}
+            wheel_lb:
+              {}
+            wheel_lf:
+              {}
+            wheel_rb:
+              {}
+            wheel_rf:
+              {}
+          t265_pose_inertial:
+            {}
       Update Interval: 0
       Value: true
     - Class: rviz_default_plugins/MarkerArray
@@ -148,7 +263,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz_default_plugins/ThirdPersonFollower
-      Distance: 0.5
+      Distance: 1.0399999618530273
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -163,10 +278,10 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: -0.14088815450668335
+      Pitch: 0.48411184549331665
       Target Frame: <Fixed Frame>
       Value: ThirdPersonFollower (rviz_default_plugins)
-      Yaw: 1.0576039552688599
+      Yaw: 5.525789260864258
     Saved: ~
 Window Geometry:
   Displays:

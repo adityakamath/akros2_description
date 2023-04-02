@@ -9,6 +9,7 @@ Package with AKROS2 description files
 * For visualization on Unity, the ```akros2.urdf.xacro``` file should be converted to ```akros2.urdf``` using the ```xacro``` command from the akros2_description root:
   
   ```
-  xacro urdf/akros2.urdf.xacro unity:=True > urdf/akros2.urdf
+  xacro urdf/akros2.urdf.xacro unity:=True > urdf/akros2_unity.urdf
   ```
   This argument fixes the launch path in the generated .urdf file so that it can be used with Unity. The generated URDF should be copied into the [akros_3d_assets](https://github.com/adityakamath/akros_3d_assets/tree/akros2_urdf) directory (replacing the existing .urdf file if there is one already). This directory must be copied into the ```Assets``` directory in the Unity project. Then, from Unity, the URDF can be imported into the project as a GameObject using the [Unity-ROS](https://github.com/Unity-Technologies/Unity-Robotics-Hub) [URDF Importer](https://github.com/Unity-Technologies/URDF-Importer#integrate-urdf-importer-into-unity-project).
+* For visualization on other visualization tools/apps (other than Unity), meshes can also be referenced from the remote repository [akros_3d_assets](https://github.com/adityakamath/akros_3d_assets/tree/akros2_urdf) by updating the ```mesh_path``` property in ```akros2.urdf.xacro``` While it works on RViz, Foxglove Studio, some apps might not be able to parse meshes from remote URLs, so the local meshes are currently used as default. 
