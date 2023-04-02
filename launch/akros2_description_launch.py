@@ -43,11 +43,6 @@ def generate_launch_description():
             default_value='joint_states',
             description='Switch between measured (joint_states) and required (req_states) topics'),
         
-        DeclareLaunchArgument(
-            name='mesh_pub',
-            default_value='true',
-            description='Launches mesh publisher if set to true'),
-        
         Node(
             package='robot_state_publisher',
             executable='robot_state_publisher',
@@ -63,15 +58,6 @@ def generate_launch_description():
             executable='joint_state_publisher',
             name='joint_state_publisher',
             parameters=[{'source_list': ['joint_lf', 'joint_lb', 'joint_rf', 'joint_rb']}],
-            remappings=[
-                ('/joint_states', ['/', LaunchConfiguration('micro_ros_ns'), '/', LaunchConfiguration('joint_state_topic')])
-            ]),
-        
-        Node(
-            condition=IfCondition(LaunchConfiguration('mesh_pub')),
-            package='akros2_description',
-            executable='mesh_publisher',
-            name='mesh_publisher',
             remappings=[
                 ('/joint_states', ['/', LaunchConfiguration('micro_ros_ns'), '/', LaunchConfiguration('joint_state_topic')])
             ]),
