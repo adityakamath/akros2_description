@@ -25,7 +25,6 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'mesh_publisher = akros2_description.mesh_publisher:main'
         ],
     },
 )
