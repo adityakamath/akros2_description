@@ -24,7 +24,7 @@
    <material name="White"/>
   </visual>
   <collision>
-    <origin xyz="${base_offset_x} 0 ${base_height/2}" rpy="0 0 0" /> <!-- If needed: offset = 0.0278 -->
+    <origin xyz="${base_offset_x} 0 ${base_height/2}" rpy="0 0 0" /> <!-- If needed: offset from ground = 0.0278 -->
     <geometry>
       <box size="${base_length} ${base_width} ${base_height}"/>
     </geometry>
@@ -36,7 +36,7 @@
   <inertial>
     <origin xyz="0 0 0" rpy="0 0 0" />
     <mass value="${base_mass}"/>
-    <inertia ixx="0.015" iyy="0.0375" izz="0.0375" ixy="0" ixz="0" iyz="0"/>
+    <xacro:box_inertia m="${base_mass}" x="${base_length}" y="${base_width}" z="${base_height}"/>
   </inertial>
 </link>
 
@@ -47,7 +47,7 @@
 <link name="nav_link">
   <inertial>
     <mass value="${nav_mass}" />
-    <inertia ixx="0.01" ixy="0.01" ixz="0.01" iyy="0.01" iyz="0.01" izz="0.01" />
+    <xacro:box_inertia m="${nav_mass}" x="${nav_length}" y="${nav_width}" z="${nav_height}"/>
   </inertial>
   <visual>
     <origin xyz="0 0 -0.099" rpy="0 0 0" />
@@ -57,7 +57,7 @@
     <material name="DarkGrey"/>
   </visual>
   <collision>
-    <origin xyz="0 0 ${nav_height/2}" rpy="0 0 0" /> <!-- If needed: offset = -0.099 -->
+    <origin xyz="0 0 ${nav_height/2}" rpy="0 0 0" /> <!-- If needed: offset from base_link = -0.099 -->
     <geometry>
       <box size="${nav_length} ${nav_width} ${nav_height}"/>
     </geometry>
@@ -69,7 +69,7 @@
   <inertial>
     <origin xyz="0 0 0" rpy="0 0 0" />
     <mass value="${laser_mass}" />
-    <inertia ixx="0.01" ixy="0.01" ixz="0.01" iyy="0.01" iyz="0.01" izz="0.01" />
+    <xacro:box_inertia m="${laser_mass}" x="${laser_length}" y="${laser_width}" z="${laser_height}"/>
   </inertial>
   <visual>
     <origin xyz="0 0 0" rpy="0 0 ${minus_pi_by_two}" />
@@ -117,7 +117,7 @@
   <inertial>
     <origin xyz="0 0 0" rpy="0 0 0" />
     <mass value="${t265_mass}" />
-    <inertia ixx="0.01" ixy="0.01" ixz="0.01" iyy="0.01" iyz="0.01" izz="0.01" />
+    <xacro:box_inertia m="${t265_mass}" x="${t265_length}" y="${t265_width}" z="${t265_height}"/>
   </inertial>
 </link>
 
@@ -125,7 +125,7 @@
 <link name="wheel_lf">
   <inertial>
     <mass value="${wheel_mass}"/>
-    <inertia ixx="5.1458e-5" iyy="5.1458e-5" izz="6.125e-5" ixy="0" ixz="0" iyz="0"/>
+    <xacro:cylinder_inertia m="${wheel_mass}" r="${wheel_radius}" h="${wheel_height}"/>
   </inertial>
   <visual>
     <origin xyz="0 0 0" rpy="0 0 0" />
@@ -135,7 +135,7 @@
     <material name="FlatBlack"/>
   </visual>
   <collision>
-    <origin xyz="0 ${wheel_height/2} 0" rpy="${pi_by_two} 0 0" /><!-- If needed: offset = 0.01 -->
+    <origin xyz="0 ${wheel_height/2} 0" rpy="${pi_by_two} 0 0" /><!-- If needed: offset from joint = 0.01 -->
     <geometry>
       <cylinder length="${wheel_height}" radius="${wheel_radius}"/>
     </geometry>
@@ -146,7 +146,7 @@
 <link name="wheel_lb">
   <inertial>
     <mass value="${wheel_mass}"/>
-    <inertia ixx="5.1458e-5" iyy="5.1458e-5" izz="6.125e-5" ixy="0" ixz="0" iyz="0"/>
+    <xacro:cylinder_inertia m="${wheel_mass}" r="${wheel_radius}" h="${wheel_height}"/>
   </inertial>
   <visual>
     <origin xyz="0 0 0" rpy="0 0 0" />
@@ -156,7 +156,7 @@
     <material name="FlatBlack"/>
   </visual>
   <collision>
-    <origin xyz="0 ${wheel_height/2} 0" rpy="${pi_by_two} 0 0" /><!-- If needed: offset = 0.01 -->
+    <origin xyz="0 ${wheel_height/2} 0" rpy="${pi_by_two} 0 0" /><!-- If needed: offset from joint = 0.01 -->
     <geometry>
       <cylinder length="${wheel_height}" radius="${wheel_radius}"/>
     </geometry>
@@ -167,7 +167,7 @@
 <link name="wheel_rf">
   <inertial>
     <mass value="${wheel_mass}"/>
-    <inertia ixx="5.1458e-5" iyy="5.1458e-5" izz="6.125e-5" ixy="0" ixz="0" iyz="0"/>
+    <xacro:cylinder_inertia m="${wheel_mass}" r="${wheel_radius}" h="${wheel_height}"/>
   </inertial>
   <visual>
     <origin xyz="0 0 0" rpy="0 0 0" />
@@ -177,7 +177,7 @@
     <material name="FlatBlack"/>
   </visual>
   <collision>
-    <origin xyz="0 ${-1*(wheel_height/2)} 0" rpy="${pi_by_two} 0 0" /><!-- If needed: offset = 0.01 -->
+    <origin xyz="0 ${-1*(wheel_height/2)} 0" rpy="${pi_by_two} 0 0" /><!-- If needed: offset from joint = 0.01 -->
     <geometry>
       <cylinder length="${wheel_height}" radius="${wheel_radius}"/>
     </geometry>
@@ -188,7 +188,7 @@
 <link name="wheel_rb">
   <inertial>
     <mass value="${wheel_mass}"/>
-    <inertia ixx="5.1458e-5" iyy="5.1458e-5" izz="6.125e-5" ixy="0" ixz="0" iyz="0"/>
+    <xacro:cylinder_inertia m="${wheel_mass}" r="${wheel_radius}" h="${wheel_height}"/>
   </inertial>
   <visual>
     <origin xyz="0 0 0" rpy="0 0 0" />
@@ -198,7 +198,7 @@
     <material name="FlatBlack"/>
   </visual>
   <collision>
-    <origin xyz="0 ${-1*(wheel_height/2)} 0" rpy="${pi_by_two} 0 0" /><!-- If needed: offset = 0.01 -->
+    <origin xyz="0 ${-1*(wheel_height/2)} 0" rpy="${pi_by_two} 0 0" /><!-- If needed: offset from joint = 0.01 -->
     <geometry>
       <cylinder length="${wheel_height}" radius="${wheel_radius}"/>
     </geometry>
