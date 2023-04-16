@@ -179,7 +179,7 @@
     <inertial>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <mass value="2.0"/>
-      <box_inertia m="2.0" x="0.21" y="0.154" z="0.099"/>
+      <inertia ixx="0.005586166666666667" ixy="0" ixz="0" iyy="0.008983499999999998" iyz="0" izz="0.008983499999999998"/>
     </inertial>
   </link>
   <!-- BASE_FOOTPRINT -->
@@ -188,7 +188,7 @@
   <link name="nav_link">
     <inertial>
       <mass value="0.5"/>
-      <box_inertia m="0.5" x="0.2" y="0.154" z="0.031"/>
+      <inertia ixx="0.0010282083333333334" ixy="0" ixz="0" iyy="0.0017067083333333335" iyz="0" izz="0.0017067083333333335"/>
     </inertial>
     <visual>
       <origin rpy="0 0 0" xyz="0 0 -0.099"/>
@@ -210,7 +210,7 @@
     <inertial>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <mass value="0.12"/>
-      <box_inertia m="0.12" x="0.038" y="0.0381" z="0.033"/>
+      <inertia ixx="2.5406100000000004e-05" ixy="0" ixz="0" iyy="2.533e-05" iyz="0" izz="2.533e-05"/>
     </inertial>
     <visual>
       <origin rpy="0 0 -1.5707963" xyz="0 0 0"/>
@@ -253,14 +253,14 @@
     <inertial>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <mass value="0.055"/>
-      <box_inertia m="0.055" x="0.012" y="0.108" z="0.024"/>
+      <inertia ixx="5.61e-05" ixy="0" ixz="0" iyy="3.3e-06" iyz="0" izz="3.3e-06"/>
     </inertial>
   </link>
   <!-- WHEEL LEFT FRONT -->
   <link name="wheel_lf">
     <inertial>
       <mass value="0.075"/>
-      <cylinder_inertia h="0.034" m="0.075" r="0.038"/>
+      <inertia ixx="3.43e-05" ixy="0" ixz="0" iyy="3.43e-05" iyz="0" izz="5.4149999999999995e-05"/>
     </inertial>
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
@@ -281,7 +281,7 @@
   <link name="wheel_lb">
     <inertial>
       <mass value="0.075"/>
-      <cylinder_inertia h="0.034" m="0.075" r="0.038"/>
+      <inertia ixx="3.43e-05" ixy="0" ixz="0" iyy="3.43e-05" iyz="0" izz="5.4149999999999995e-05"/>
     </inertial>
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
@@ -302,7 +302,7 @@
   <link name="wheel_rf">
     <inertial>
       <mass value="0.075"/>
-      <cylinder_inertia h="0.034" m="0.075" r="0.038"/>
+      <inertia ixx="3.43e-05" ixy="0" ixz="0" iyy="3.43e-05" iyz="0" izz="5.4149999999999995e-05"/>
     </inertial>
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
@@ -323,7 +323,7 @@
   <link name="wheel_rb">
     <inertial>
       <mass value="0.075"/>
-      <cylinder_inertia h="0.034" m="0.075" r="0.038"/>
+      <inertia ixx="3.43e-05" ixy="0" ixz="0" iyy="3.43e-05" iyz="0" izz="5.4149999999999995e-05"/>
     </inertial>
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
