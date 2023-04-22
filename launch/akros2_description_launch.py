@@ -29,12 +29,12 @@ def generate_launch_description():
     
     return LaunchDescription([
         DeclareLaunchArgument(
-            name='micro_ros_ns',
+            name='uros_ns',
             default_value='drive',
             description='Namespace of the micro-ROS system'),
         
         DeclareLaunchArgument(
-            name='micro_ros',
+            name='uros',
             default_value='false',
             description='Enable Joint States from the micro-ROS node'),
         
@@ -49,16 +49,16 @@ def generate_launch_description():
             name='robot_state_publisher',
             parameters=[{'robot_description': robot_description}],
             remappings=[
-                ('/joint_states', ['/', LaunchConfiguration('micro_ros_ns'), '/', LaunchConfiguration('joint_state_topic')])
+                ('/joint_states', ['/', LaunchConfiguration('uros_ns'), '/', LaunchConfiguration('joint_state_topic')])
             ]),
         
         Node(
-            condition=UnlessCondition(LaunchConfiguration('micro_ros')),
+            condition=UnlessCondition(LaunchConfiguration('uros')),
             package='joint_state_publisher',
             executable='joint_state_publisher',
             name='joint_state_publisher',
             parameters=[{'source_list': ['joint_lf', 'joint_lb', 'joint_rf', 'joint_rb']}],
             remappings=[
-                ('/joint_states', ['/', LaunchConfiguration('micro_ros_ns'), '/', LaunchConfiguration('joint_state_topic')])
+                ('/joint_states', ['/', LaunchConfiguration('uros_ns'), '/', LaunchConfiguration('joint_state_topic')])
             ]),
     ])
