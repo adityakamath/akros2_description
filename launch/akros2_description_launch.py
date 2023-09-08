@@ -35,7 +35,7 @@ def generate_launch_description():
         
         DeclareLaunchArgument(
             name='uros',
-            default_value='false',
+            default_value='False',
             description='Enable Joint States from the micro-ROS node'),
         
         DeclareLaunchArgument(
