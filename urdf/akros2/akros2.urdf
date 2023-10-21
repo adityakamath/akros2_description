@@ -162,7 +162,7 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://akros2_description/meshes/base_module.dae"/>
+        <mesh filename="package://akros2_description/meshes/akros2/base_module.dae"/>
       </geometry>
       <material name="White"/>
     </visual>
@@ -193,7 +193,7 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 -0.099"/>
       <geometry>
-        <mesh filename="package://akros2_description/meshes/navigation_module.dae"/>
+        <mesh filename="package://akros2_description/meshes/akros2/navigation_module.dae"/>
       </geometry>
       <material name="DarkGrey"/>
     </visual>
@@ -215,7 +215,7 @@
     <visual>
       <origin rpy="0 0 -1.5707963" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://akros2_description/meshes/ld06.dae"/>
+        <mesh filename="package://akros2_description/meshes/akros2/ld06.dae"/>
       </geometry>
       <material name="FlatBlack"/>
     </visual>
@@ -237,7 +237,7 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://akros2_description/meshes/t265.dae"/>
+        <mesh filename="package://akros2_description/meshes/akros2/t265.dae"/>
       </geometry>
       <material name="Grey"/>
     </visual>
@@ -265,7 +265,7 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://akros2_description/meshes/wheel_lf.dae"/>
+        <mesh filename="package://akros2_description/meshes/akros2/wheel_lf.dae"/>
       </geometry>
       <material name="FlatBlack"/>
     </visual>
@@ -286,7 +286,7 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://akros2_description/meshes/wheel_lb.dae"/>
+        <mesh filename="package://akros2_description/meshes/akros2/wheel_lb.dae"/>
       </geometry>
       <material name="FlatBlack"/>
     </visual>
@@ -307,7 +307,7 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://akros2_description/meshes/wheel_rf.dae"/>
+        <mesh filename="package://akros2_description/meshes/akros2/wheel_rf.dae"/>
       </geometry>
       <material name="FlatBlack"/>
     </visual>
@@ -328,7 +328,7 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://akros2_description/meshes/wheel_rb.dae"/>
+        <mesh filename="package://akros2_description/meshes/akros2/wheel_rb.dae"/>
       </geometry>
       <material name="FlatBlack"/>
     </visual>

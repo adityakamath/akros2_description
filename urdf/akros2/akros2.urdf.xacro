@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot name="akros2" xmlns:xacro="http://ros.org/wiki/xacro">
+<xacro:include filename="$(find akros2_description)/urdf/akros2/akros2.common.xacro"/>
+<xacro:include filename="$(find akros2_description)/urdf/akros2/akros2.control.xacro"/>
+<xacro:include filename="$(find akros2_description)/urdf/akros2/akros2.gazebo.xacro"/>
+
+<xacro:arg name="mesh_path" default="package://akros2_description/meshes/akros2/" /> <!-- HTTPS URL also works here -->
+<xacro:arg name="unity" default="false" />
+<xacro:property name="mesh_path" value="$(arg mesh_path)" />
+
+<xacro:if value="$(arg unity)">
+  <xacro:property name="mesh_path" value="" />
+</xacro:if>
+
+<!-- **** LINKS **** -->
+
+<!-- BASE_LINK -->
+<link name="base_link">
+  <visual>
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <geometry>
+      <mesh filename="${mesh_path}base_module.dae" />
+    </geometry>
+   <material name="White"/>
+  </visual>
+  <collision>
+    <origin xyz="${base_offset_x} 0 ${base_height/2}" rpy="0 0 0" /> <!-- If needed: offset from ground = 0.0278 -->
+    <geometry>
+      <box size="${base_length} ${base_width} ${base_height}"/>
+    </geometry>
+  </collision>
+</link>
+    
+<!-- BASE_LINK_INERTIAL (WORKAROUND FOR KDL WHICH DOES NOT ACCEPT BASE_LINK WITH INERTIA) -->
+<link name="base_link_inertial">
+  <inertial>
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <mass value="${base_mass}"/>
+    <xacro:box_inertia m="${base_mass}" x="${base_length}" y="${base_width}" z="${base_height}"/>
+  </inertial>
+</link>
+
+<!-- BASE_FOOTPRINT -->    
+<link name="base_footprint"/>
+
+<!-- NAV_LINK -->
+<link name="nav_link">
+  <inertial>
+    <mass value="${nav_mass}" />
+    <xacro:box_inertia m="${nav_mass}" x="${nav_length}" y="${nav_width}" z="${nav_height}"/>
+  </inertial>
+  <visual>
+    <origin xyz="0 0 -0.099" rpy="0 0 0" />
+    <geometry>
+      <mesh filename="${mesh_path}navigation_module.dae" />
+    </geometry>
+    <material name="DarkGrey"/>
+  </visual>
+  <collision>
+    <origin xyz="0 0 ${nav_height/2}" rpy="0 0 0" /> <!-- If needed: offset from base_link = -0.099 -->
+    <geometry>
+      <box size="${nav_length} ${nav_width} ${nav_height}"/>
+    </geometry>
+  </collision>
+</link>
+
+<!-- LD06 LASER_LINK -->
+<link name="laser_link">
+  <inertial>
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <mass value="${laser_mass}" />
+    <xacro:box_inertia m="${laser_mass}" x="${laser_length}" y="${laser_width}" z="${laser_height}"/>
+  </inertial>
+  <visual>
+    <origin xyz="0 0 0" rpy="0 0 ${minus_pi_by_two}" />
+    <geometry>
+      <mesh filename="${mesh_path}ld06.dae" />
+    </geometry>
+    <material name="FlatBlack"/>
+  </visual>
+  <collision>
+    <origin xyz="0 0 ${laser_height/2}" rpy="0 0 ${minus_pi_by_two}" />
+    <geometry>
+      <box size="${laser_length} ${laser_width} ${laser_height}"/>
+    </geometry>
+  </collision>
+</link>
+
+<!-- LASER_FRAME -->
+<link name="laser_frame"/>
+    
+<!-- MPU9250 IMU_LINK -->
+<link name="imu_link"/>
+
+<!-- IMU_FRAME -->
+<link name="imu_frame"/>  
+
+<!-- T265 TRACKING CAMERA (T265_POSE_FRAME AS WORKAROUND TO KEEP TREE CONTINUOUS)-->
+<link name="t265_pose_frame">
+  <visual>
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <geometry>
+      <mesh filename="${mesh_path}t265.dae" />
+    </geometry>
+    <material name="Grey"/>
+  </visual>
+  <collision>
+    <origin xyz="0 ${t265_offset_y} 0" rpy="0 0 0" />
+    <geometry>
+      <box size="${t265_length} ${t265_width} ${t265_height}"/>
+    </geometry>
+  </collision>
+</link>
+    
+<!-- T265 TRACKING CAMERA (T265_POSE_INERTIAL)-->
+<link name="t265_pose_inertial">
+  <inertial>
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <mass value="${t265_mass}" />
+    <xacro:box_inertia m="${t265_mass}" x="${t265_length}" y="${t265_width}" z="${t265_height}"/>
+  </inertial>
+</link>
+
+<!-- WHEEL LEFT FRONT -->
+<link name="wheel_lf">
+  <inertial>
+    <mass value="${wheel_mass}"/>
+    <xacro:cylinder_inertia m="${wheel_mass}" r="${wheel_radius}" h="${wheel_height}"/>
+  </inertial>
+  <visual>
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <geometry>
+      <mesh filename="${mesh_path}wheel_lf.dae" />
+    </geometry>
+    <material name="FlatBlack"/>
+  </visual>
+  <collision>
+    <origin xyz="0 ${wheel_height/2} 0" rpy="${pi_by_two} 0 0" /><!-- If needed: offset from joint = 0.01 -->
+    <geometry>
+      <cylinder length="${wheel_height}" radius="${wheel_radius}"/>
+    </geometry>
+  </collision>
+</link>
+
+<!-- WHEEL LEFT BACK -->
+<link name="wheel_lb">
+  <inertial>
+    <mass value="${wheel_mass}"/>
+    <xacro:cylinder_inertia m="${wheel_mass}" r="${wheel_radius}" h="${wheel_height}"/>
+  </inertial>
+  <visual>
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <geometry>
+      <mesh filename="${mesh_path}wheel_lb.dae" />
+    </geometry>
+    <material name="FlatBlack"/>
+  </visual>
+  <collision>
+    <origin xyz="0 ${wheel_height/2} 0" rpy="${pi_by_two} 0 0" /><!-- If needed: offset from joint = 0.01 -->
+    <geometry>
+      <cylinder length="${wheel_height}" radius="${wheel_radius}"/>
+    </geometry>
+  </collision>
+</link>
+
+<!-- WHEEL RIGHT FRONT -->
+<link name="wheel_rf">
+  <inertial>
+    <mass value="${wheel_mass}"/>
+    <xacro:cylinder_inertia m="${wheel_mass}" r="${wheel_radius}" h="${wheel_height}"/>
+  </inertial>
+  <visual>
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <geometry>
+      <mesh filename="${mesh_path}wheel_rf.dae" />
+    </geometry>
+    <material name="FlatBlack"/>
+  </visual>
+  <collision>
+    <origin xyz="0 ${-1*(wheel_height/2)} 0" rpy="${pi_by_two} 0 0" /><!-- If needed: offset from joint = 0.01 -->
+    <geometry>
+      <cylinder length="${wheel_height}" radius="${wheel_radius}"/>
+    </geometry>
+  </collision>
+</link>
+
+<!-- WHEEL RIGHT BACK -->
+<link name="wheel_rb">
+  <inertial>
+    <mass value="${wheel_mass}"/>
+    <xacro:cylinder_inertia m="${wheel_mass}" r="${wheel_radius}" h="${wheel_height}"/>
+  </inertial>
+  <visual>
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <geometry>
+      <mesh filename="${mesh_path}wheel_rb.dae" />
+    </geometry>
+    <material name="FlatBlack"/>
+  </visual>
+  <collision>
+    <origin xyz="0 ${-1*(wheel_height/2)} 0" rpy="${pi_by_two} 0 0" /><!-- If needed: offset from joint = 0.01 -->
+    <geometry>
+      <cylinder length="${wheel_height}" radius="${wheel_radius}"/>
+    </geometry>
+  </collision>
+</link>
+
+<!-- **** JOINTS **** -->
+    
+<!-- BASE_LINK TO T265_POSE_FRAME -->
+<joint name="pose_base_fixed" type="fixed">
+  <parent link="t265_pose_frame"/>
+  <child link="base_link"/>
+  <origin xyz="${pose_base_offset_x} 0 ${pose_base_offset_z}"/>
+</joint>
+    
+<!-- T265_POSE_INERTIAL TO T265_POSE_FRAME -->
+<joint name="pose_inertial_fixed" type="fixed">
+  <parent link="t265_pose_frame"/>
+  <child link="t265_pose_inertial"/>
+  <origin xyz="0 0 0"/>
+</joint>
+    
+<!-- BASE_LINK_INERTIAL TO BASE_LINK -->
+<joint name="base_inertial_fixed" type="fixed">
+  <parent link="base_link"/>
+  <child link="base_link_inertial"/>
+  <origin xyz="0 0 0"/>
+</joint>
+    
+<!-- BASE_FOOTPRINT TO BASE_LINK -->
+<joint name="base_footprint_fixed" type="fixed">
+  <parent link="base_link"/>
+  <child link="base_footprint"/>
+  <origin xyz="0 0 0"/>
+</joint>
+    
+<!-- NAV_LINK TO BASE_LINK -->
+<joint name="base_nav_fixed" type="fixed">
+  <parent link="base_link"/>
+  <child link="nav_link"/>
+  <origin xyz="0 0 ${base_height}"/>
+  <axis xyz="0 0 0"/>
+</joint>
+
+<!-- LASER_LINK TO NAV_LINK -->
+<joint name="nav_laser_fixed" type="fixed">
+  <parent link="nav_link"/>
+  <child link="laser_link"/>
+  <origin xyz="${nav_laser_offset_x} 0 ${nav_height/2}"/>
+</joint>
+
+<!-- LASER_FRAME TO LASER_LINK -->
+<joint name="laser_frame_fixed" type="fixed">
+  <parent link="laser_link"/>
+  <child link="laser_frame"/>
+  <origin xyz="0 0 ${laser_frame_offset_z}"/>
+</joint>
+    
+<!-- IMU_LINK TO BASE_LINK -->
+<joint name="imu_base_fixed" type="fixed">
+  <parent link="base_link"/>
+  <child link="imu_link"/>
+  <origin xyz="0 0 0"/>
+</joint>
+
+<!-- IMU_FRAME TO IMU_LINK -->
+<joint name="imu_frame_fixed" type="fixed">
+  <parent link="imu_link"/>
+  <child link="imu_frame"/>
+  <origin xyz="0 0 0"/>
+</joint>
+
+<!-- WHEEL_LF TO BASE_LINK -->
+<joint name="joint_lf" type="continuous">
+  <parent link="base_link" />
+  <child link="wheel_lf" />
+  <origin xyz="${joint_offset_x} ${joint_offset_y} ${joint_offset_z}" rpy="0 0 0" />
+  <axis xyz="0 1 0" />
+</joint>
+    
+<!-- WHEEL_LB TO BASE_LINK -->
+<joint name="joint_lb" type="continuous">
+  <parent link="base_link" />
+  <child link="wheel_lb" />
+  <origin xyz="${-1*joint_offset_x} ${joint_offset_y} ${joint_offset_z}" rpy="0 0 0" />
+  <axis xyz="0 1 0" />
+</joint>
+   
+<!-- WHEEL_RF TO BASE_LINK -->
+<joint name="joint_rf" type="continuous">
+  <parent link="base_link" />
+  <child link="wheel_rf" />
+  <origin xyz="${joint_offset_x} ${-1*joint_offset_y} ${joint_offset_z}" rpy="0 0 0" />
+  <axis xyz="0 1 0" />
+</joint>
+    
+<!-- WHEEL_RB TO BASE_LINK -->
+<joint name="joint_rb" type="continuous">
+  <parent link="base_link" />
+  <child link="wheel_rb" />
+  <origin xyz="${-1*joint_offset_x} ${-1*joint_offset_y} ${joint_offset_z}" rpy="0 0 0" />
+  <axis xyz="0 1 0" />
+</joint>   
+
+</robot>

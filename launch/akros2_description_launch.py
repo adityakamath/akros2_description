@@ -24,7 +24,7 @@ from ament_index_python.packages import get_package_share_directory, get_package
 def generate_launch_description():
     
     robot_description = ParameterValue(
-        Command(['xacro ', str(get_package_share_path('akros2_description') / 'urdf/akros2.urdf.xacro')]),
+        Command(['xacro ', str(get_package_share_path('akros2_description') / 'urdf/akros2/akros2.urdf.xacro')]),
         value_type=str)
     
     return LaunchDescription([
