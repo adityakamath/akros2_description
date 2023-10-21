@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<robot name="akros2_control" xmlns:xacro="http://ros.org/wiki/xacro">
+<robot name="mecanum_control" xmlns:xacro="http://ros.org/wiki/xacro">
 
 <!-- WHEEL_LF TRANSMISSION -->
 <transmission name="trans_lf">

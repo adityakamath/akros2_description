@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<robot name="akros2" xmlns:xacro="http://ros.org/wiki/xacro">
-<xacro:include filename="$(find akros2_description)/urdf/akros2/akros2.common.xacro"/>
-<xacro:include filename="$(find akros2_description)/urdf/akros2/akros2.control.xacro"/>
-<xacro:include filename="$(find akros2_description)/urdf/akros2/akros2.gazebo.xacro"/>
+<robot name="akros2_mecanum" xmlns:xacro="http://ros.org/wiki/xacro">
+<xacro:include filename="$(find akros2_description)/urdf/akros2_mecanum/akros2_mecanum.common.xacro"/>
+<xacro:include filename="$(find akros2_description)/urdf/akros2_mecanum/akros2_mecanum.control.xacro"/>
+<xacro:include filename="$(find akros2_description)/urdf/akros2_mecanum/akros2_mecanum.gazebo.xacro"/>
 
-<xacro:arg name="mesh_path" default="package://akros2_description/meshes/akros2/" /> <!-- HTTPS URL also works here -->
+<xacro:arg name="mesh_path" default="package://akros2_description/meshes/akros2_mecanum/" /> <!-- HTTPS URL also works here -->
 <xacro:arg name="unity" default="false" />
 <xacro:property name="mesh_path" value="$(arg mesh_path)" />
 
@@ -93,33 +93,7 @@
 <link name="imu_link"/>
 
 <!-- IMU_FRAME -->
-<link name="imu_frame"/>  
-
-<!-- T265 TRACKING CAMERA (T265_POSE_FRAME AS WORKAROUND TO KEEP TREE CONTINUOUS)-->
-<link name="t265_pose_frame">
-  <visual>
-    <origin xyz="0 0 0" rpy="0 0 0" />
-    <geometry>
-      <mesh filename="${mesh_path}t265.dae" />
-    </geometry>
-    <material name="Grey"/>
-  </visual>
-  <collision>
-    <origin xyz="0 ${t265_offset_y} 0" rpy="0 0 0" />
-    <geometry>
-      <box size="${t265_length} ${t265_width} ${t265_height}"/>
-    </geometry>
-  </collision>
-</link>
-    
-<!-- T265 TRACKING CAMERA (T265_POSE_INERTIAL)-->
-<link name="t265_pose_inertial">
-  <inertial>
-    <origin xyz="0 0 0" rpy="0 0 0" />
-    <mass value="${t265_mass}" />
-    <xacro:box_inertia m="${t265_mass}" x="${t265_length}" y="${t265_width}" z="${t265_height}"/>
-  </inertial>
-</link>
+<link name="imu_frame"/>
 
 <!-- WHEEL LEFT FRONT -->
 <link name="wheel_lf">
@@ -206,20 +180,6 @@
 </link>
 
 <!-- **** JOINTS **** -->
-    
-<!-- BASE_LINK TO T265_POSE_FRAME -->
-<joint name="pose_base_fixed" type="fixed">
-  <parent link="t265_pose_frame"/>
-  <child link="base_link"/>
-  <origin xyz="${pose_base_offset_x} 0 ${pose_base_offset_z}"/>
-</joint>
-    
-<!-- T265_POSE_INERTIAL TO T265_POSE_FRAME -->
-<joint name="pose_inertial_fixed" type="fixed">
-  <parent link="t265_pose_frame"/>
-  <child link="t265_pose_inertial"/>
-  <origin xyz="0 0 0"/>
-</joint>
     
 <!-- BASE_LINK_INERTIAL TO BASE_LINK -->
 <joint name="base_inertial_fixed" type="fixed">

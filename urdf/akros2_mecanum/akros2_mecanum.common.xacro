@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<robot name="akros2_common" xmlns:xacro="http://ros.org/wiki/xacro">
+<robot name="mecanum_common" xmlns:xacro="http://ros.org/wiki/xacro">
     
 <xacro:property name="pi_by_two" value="1.5707963" />
 <xacro:property name="minus_pi_by_two" value="-1.5707963" />
@@ -19,19 +19,11 @@
 <xacro:property name="laser_length" value="0.038" />
 <xacro:property name="laser_width" value="0.0381" />
 <xacro:property name="laser_height" value="0.033" />
-    
-<xacro:property name="t265_mass" value="0.055" />
-<xacro:property name="t265_length" value="0.012" />
-<xacro:property name="t265_width" value="0.108" />
-<xacro:property name="t265_height" value="0.024" />
-<xacro:property name="t265_offset_y" value="0.00125" />
 
 <xacro:property name="wheel_radius" value="0.038" />
 <xacro:property name="wheel_mass" value="0.075" />
 <xacro:property name="wheel_height" value="0.034" />
-    
-<xacro:property name="pose_base_offset_x" value="-0.094" />
-<xacro:property name="pose_base_offset_z" value="-0.115" />
+
 <xacro:property name="nav_laser_offset_x" value="0.0632" />
 <xacro:property name="laser_frame_offset_z" value="0.0255" />
 

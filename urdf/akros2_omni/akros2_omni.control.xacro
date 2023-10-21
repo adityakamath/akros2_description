@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<robot name="akros2_control" xmlns:xacro="http://ros.org/wiki/xacro">
+<robot name="omni_control" xmlns:xacro="http://ros.org/wiki/xacro">
 
 <!-- WHEEL_F TRANSMISSION -->
 <transmission name="trans_f">
@@ -13,7 +13,7 @@
   </actuator>
 </transmission>
  
-<!-- WHEEL_L TRANSMISSION -->
+<!-- WHEEL_L (BACK) TRANSMISSION -->
 <transmission name="trans_l">
   <type>transmission_interface/SimpleTransmission</type>
   <joint name="joint_l">
@@ -25,7 +25,7 @@
   </actuator>
 </transmission>
 
-<!-- WHEEL_R TRANSMISSION -->
+<!-- WHEEL_R (BACK) TRANSMISSION -->
 <transmission name="trans_r">
   <type>transmission_interface/SimpleTransmission</type>
   <joint name="joint_r">

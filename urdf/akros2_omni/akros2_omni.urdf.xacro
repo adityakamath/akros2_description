@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<robot name="akros2" xmlns:xacro="http://ros.org/wiki/xacro">
+<robot name="akros2_omni" xmlns:xacro="http://ros.org/wiki/xacro">
 <xacro:include filename="$(find akros2_description)/urdf/akros2_omni/akros2_omni.common.xacro"/>
 <xacro:include filename="$(find akros2_description)/urdf/akros2_omni/akros2_omni.control.xacro"/>
 <xacro:include filename="$(find akros2_description)/urdf/akros2_omni/akros2_omni.gazebo.xacro"/>
@@ -218,7 +218,7 @@
   <axis xyz="0 1 0" />
 </joint>
     
-<!-- WHEEL_L TO BASE_LINK -->
+<!-- WHEEL_L (BACK) TO BASE_LINK -->
 <joint name="joint_l" type="continuous">
   <parent link="base_link" />
   <child link="wheel_l" />
@@ -226,7 +226,7 @@
   <axis xyz="0 1 0" />
 </joint>
    
-<!-- WHEEL_R TO BASE_LINK -->
+<!-- WHEEL_R (BACK) TO BASE_LINK -->
 <joint name="joint_r" type="continuous">
   <parent link="base_link" />
   <child link="wheel_r" />
