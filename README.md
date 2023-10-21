@@ -3,15 +3,14 @@ Package with AKROS2 description files for different configurations - Mecanum Dri
 
 * Publishes the robot description using [robot_state_publisher](https://github.com/ros/robot_state_publisher) and publishes the corresponding joint states using [joint_state_publisher](https://github.com/ros/joint_state_publisher). 
 * The ```joint_state_publisher``` subscribes to [JointState messages](https://docs.ros2.org/foxy/api/sensor_msgs/msg/JointState.html) for each defined joint in the launch file. It then publishes a combined JointState message, which the ```robot_state_publisher``` subscribes to and updates the transforms.
-* For visualization in Unity, the ```*.urdf.xacro``` should be converted to a ```*.urdf``` file using the ```xacro``` command from the root of this directory:
+* For visualization in Unity, the ```*.urdf.xacro``` should be converted to a ```*.urdf``` file using the ```xacro``` command from the root of this directory. For example:
   
   ```
-  xacro urdf/akros2_mecanum/akros2_mecanum.urdf.xacro unity:=True > urdf/akros2_mecanum/akros2_mecanum.urdf
-  xacro urdf/akros2_omni/akros2_omni.urdf.xacro unity:=True > urdf/akros2_omni/akros2_omni.urdf
+  xacro urdf/akros2_<config>/akros2_<config>.urdf.xacro unity:=True > urdf/akros2_<config>/akros2_<config>.urdf
   ```
   This argument fixes the launch path in the generated .urdf file so that it can be used with Unity. The generated URDF should be copied into the [akros_3d_assets](https://github.com/adityakamath/akros_3d_assets/tree/akros2_urdf) repo, in the corresponding mecanum/omni directory (replacing the existing .urdf file if there is one already). This directory must be copied into the ```Assets``` directory in the Unity project. Then, from Unity, the URDF can be imported into the project as a GameObject using the [Unity-ROS](https://github.com/Unity-Technologies/Unity-Robotics-Hub) [URDF Importer](https://github.com/Unity-Technologies/URDF-Importer#integrate-urdf-importer-into-unity-project).
-* For visualization on other tools/apps (other than Unity), meshes can also be referenced from the corresponding directory of a remote repository [akros_3d_assets (```akros2_urdf``` branch)](https://github.com/adityakamath/akros_3d_assets/tree/akros2_urdf) by updating the ```mesh_path``` property in ```akros2_*.urdf.xacro```. While this works on RViz, Foxglove Studio, some apps might not be able to parse meshes from remote URLs, so the local meshes are currently used as default.
-* The [akros_3d_assets repo (```akros2_urdf``` branch)](https://github.com/adityakamath/akros_3d_assets/tree/akros2_urdf) also contains ```akros2_*.urdf``` in the config-corresponding directory, which can also be used directly in apps like Foxglove Studio.
+* For visualization on other tools/apps (other than Unity), meshes can also be referenced from the corresponding directory of a remote repository [akros_3d_assets (```akros2_urdf``` branch)](https://github.com/adityakamath/akros_3d_assets/tree/akros2_urdf) by updating the ```mesh_path``` property in ```akros2_<config>.urdf.xacro```. While this works on RViz, Foxglove Studio, some apps might not be able to parse meshes from remote URLs, so the local meshes are currently used as default.
+* The [akros_3d_assets repo (```akros2_urdf``` branch)](https://github.com/adityakamath/akros_3d_assets/tree/akros2_urdf) also contains ```akros2_<config>.urdf``` in the config-corresponding directory, which can also be used directly in apps like Foxglove Studio.
 
 ## akros2_description_launch.py
 This is the main launch file and is configured using the following launch arguments:
