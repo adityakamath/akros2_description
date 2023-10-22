@@ -57,7 +57,7 @@ def generate_launch_description():
                     output='screen',
                     parameters=[{'robot_description': mecanum_robot_description}],
                     remappings=[
-                        ('/joint_states', ['/drive/', LaunchConfiguration('js_topic')])
+                        ('/joint_states', ['/', LaunchConfiguration('js_topic')])
                     ]),
                 
                 Node(
@@ -67,7 +67,7 @@ def generate_launch_description():
                     name='joint_state_publisher',
                     parameters=[{'source_list': ['joint_lf', 'joint_lb', 'joint_rf', 'joint_rb']}],
                     remappings=[
-                        ('/joint_states', ['/drive/', LaunchConfiguration('js_topic')])
+                        ('/joint_states', ['/', LaunchConfiguration('js_topic')])
                     ]),
             ]),
         
@@ -81,7 +81,7 @@ def generate_launch_description():
                     output='screen',
                     parameters=[{'robot_description': omni_robot_description}],
                     remappings=[
-                        ('/joint_states', ['/drive/', LaunchConfiguration('js_topic')])
+                        ('/joint_states', ['/', LaunchConfiguration('js_topic')])
                     ]),
                 
                 Node(
@@ -91,7 +91,7 @@ def generate_launch_description():
                     name='joint_state_publisher',
                     parameters=[{'source_list': ['joint_f', 'joint_l', 'joint_r']}],
                     remappings=[
-                        ('/joint_states', ['/drive/', LaunchConfiguration('js_topic')])
+                        ('/joint_states', ['/', LaunchConfiguration('js_topic')])
                     ]),
             ]),
     ])
