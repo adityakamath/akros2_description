@@ -56,7 +56,7 @@ def generate_launch_description():
                     output='screen',
                     parameters=[{'robot_description': mecanum_robot_description}],
                     remappings=[
-                        ('/joint_states', ['/', LaunchConfiguration('js_topic')])
+                        ('/joint_states', ['/drive/', LaunchConfiguration('js_topic')]) # temporary, to be removed once micro-ros remapping is done
                     ]),
                 
                 Node(
