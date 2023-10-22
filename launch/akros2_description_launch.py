@@ -14,7 +14,8 @@
 
 import os
 from launch import LaunchDescription
-from launch.actions import DeclareLaunchArgument, GroupAction
+from launch.actions import DeclareLaunchArgument, GroupAction, RegisterEventHandler, Shutdown
+from launch.event_handlers import OnProcessExit
 from launch.substitutions import LaunchConfiguration, PathJoinSubstitution, Command, PythonExpression
 from launch.conditions import IfCondition, UnlessCondition, LaunchConfigurationEquals
 from launch_ros.actions import Node
@@ -29,6 +30,26 @@ def generate_launch_description():
     omni_robot_description = ParameterValue(
         Command(['xacro ', str(get_package_share_path('akros2_description') / 'urdf/akros2_omni/akros2_omni.urdf.xacro')]),
         value_type=str)
+    
+    mecanum_js_publisher = Node(
+        condition=UnlessCondition(LaunchConfiguration('js_ext')),
+        package='joint_state_publisher',
+        executable='joint_state_publisher',
+        name='mecanum_js_pub',
+        parameters=[{'source_list': ['joint_lf', 'joint_lb', 'joint_rf', 'joint_rb']}],
+        remappings=[
+            ('/joint_states', ['/drive/', LaunchConfiguration('js_topic')])
+        ])
+        
+    omni_js_publisher = Node(
+        condition=UnlessCondition(LaunchConfiguration('js_ext')),
+        package='joint_state_publisher',
+        executable='joint_state_publisher',
+        name='omni_js_pub',
+        parameters=[{'source_list': ['joint_f', 'joint_l', 'joint_r']}],
+        remappings=[
+            ('/joint_states', ['/drive/', LaunchConfiguration('js_topic')])
+        ])
     
     return LaunchDescription([ 
         DeclareLaunchArgument(
@@ -58,16 +79,13 @@ def generate_launch_description():
                     remappings=[
                         ('/joint_states', ['/drive/', LaunchConfiguration('js_topic')])
                     ]),
-        
-                Node(
-                    condition=UnlessCondition(LaunchConfiguration('js_ext')),
-                    package='joint_state_publisher',
-                    executable='joint_state_publisher',
-                    name='joint_state_publisher',
-                    parameters=[{'source_list': ['joint_lf', 'joint_lb', 'joint_rf', 'joint_rb']}],
-                    remappings=[
-                        ('/joint_states', ['/drive/', LaunchConfiguration('js_topic')])
-                    ]),
+                
+                mecanum_js_publisher,
+                
+                RegisterEventHandler(
+                    event_handler=OnProcessExit(
+                        target_action=mecanum_js_publisher,
+                        on_exit=[Shutdown()])),
             ]),
         
         GroupAction(
@@ -82,15 +100,12 @@ def generate_launch_description():
                     remappings=[
                         ('/joint_states', ['/drive/', LaunchConfiguration('js_topic')])
                     ]),
-        
-                Node(
-                    condition=UnlessCondition(LaunchConfiguration('js_ext')),
-                    package='joint_state_publisher',
-                    executable='joint_state_publisher',
-                    name='joint_state_publisher',
-                    parameters=[{'source_list': ['joint_f', 'joint_l', 'joint_r']}],
-                    remappings=[
-                        ('/joint_states', ['/drive/', LaunchConfiguration('js_topic')])
-                    ]),
+                
+                omni_js_publisher,
+                
+                RegisterEventHandler(
+                    event_handler=OnProcessExit(
+                        target_action=omni_js_publisher,
+                        on_exit=[Shutdown()])),
             ]),
     ])
