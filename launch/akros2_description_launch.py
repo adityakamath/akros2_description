@@ -14,9 +14,8 @@
 
 import os
 from launch import LaunchDescription
-from launch.actions import DeclareLaunchArgument, GroupAction, RegisterEventHandler, Shutdown
-from launch.event_handlers import OnProcessExit
-from launch.substitutions import LaunchConfiguration, PathJoinSubstitution, Command, PythonExpression
+from launch.actions import DeclareLaunchArgument, GroupAction
+from launch.substitutions import LaunchConfiguration, PathJoinSubstitution, Command
 from launch.conditions import IfCondition, UnlessCondition, LaunchConfigurationEquals
 from launch_ros.actions import Node
 from launch_ros.parameter_descriptions import ParameterValue
