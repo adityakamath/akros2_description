@@ -24,7 +24,7 @@
    <material name="White"/>
   </visual>
   <collision>
-    <origin xyz="${base_offset_x} 0 ${base_height/2}" rpy="0 0 0" /> <!-- If needed: offset from ground = 0.0278 -->
+    <origin xyz="${base_offset_x/2} 0 ${base_height/2}" rpy="0 0 0" />
     <geometry>
       <box size="${base_length} ${base_width} ${base_height}"/>
     </geometry>
@@ -50,14 +50,14 @@
     <xacro:box_inertia m="${nav_mass}" x="${nav_length}" y="${nav_width}" z="${nav_height}"/>
   </inertial>
   <visual>
-    <origin xyz="0 0 -0.099" rpy="0 0 0" />
+    <origin xyz="0 0 ${nav_offset_z}" rpy="0 0 0" />
     <geometry>
       <mesh filename="${mesh_path}navigation_module.dae" />
     </geometry>
     <material name="DarkGrey"/>
   </visual>
   <collision>
-    <origin xyz="0 0 ${nav_height/2}" rpy="0 0 0" /> <!-- If needed: offset from base_link = -0.099 -->
+    <origin xyz="0 0 ${nav_height/2}" rpy="0 0 0" />
     <geometry>
       <box size="${nav_length} ${nav_width} ${nav_height}"/>
     </geometry>
@@ -109,7 +109,7 @@
     <material name="FlatBlack"/>
   </visual>
   <collision>
-    <origin xyz="0 ${wheel_height/2} 0" rpy="${pi_by_two} 0 0" /><!-- If needed: offset from joint = 0.01 -->
+    <origin xyz="0 ${wheel_height/2} 0" rpy="${pi_by_two} 0 0" />
     <geometry>
       <cylinder length="${wheel_height}" radius="${wheel_radius}"/>
     </geometry>
@@ -130,7 +130,7 @@
     <material name="FlatBlack"/>
   </visual>
   <collision>
-    <origin xyz="0 ${wheel_height/2} 0" rpy="${pi_by_two} 0 0" /><!-- If needed: offset from joint = 0.01 -->
+    <origin xyz="0 ${wheel_height/2} 0" rpy="${pi_by_two} 0 0" />
     <geometry>
       <cylinder length="${wheel_height}" radius="${wheel_radius}"/>
     </geometry>
@@ -151,7 +151,7 @@
     <material name="FlatBlack"/>
   </visual>
   <collision>
-    <origin xyz="0 ${-1*(wheel_height/2)} 0" rpy="${pi_by_two} 0 0" /><!-- If needed: offset from joint = 0.01 -->
+    <origin xyz="0 ${-1*(wheel_height/2)} 0" rpy="${pi_by_two} 0 0" />
     <geometry>
       <cylinder length="${wheel_height}" radius="${wheel_radius}"/>
     </geometry>
@@ -172,7 +172,7 @@
     <material name="FlatBlack"/>
   </visual>
   <collision>
-    <origin xyz="0 ${-1*(wheel_height/2)} 0" rpy="${pi_by_two} 0 0" /><!-- If needed: offset from joint = 0.01 -->
+    <origin xyz="0 ${-1*(wheel_height/2)} 0" rpy="${pi_by_two} 0 0" />
     <geometry>
       <cylinder length="${wheel_height}" radius="${wheel_radius}"/>
     </geometry>
@@ -192,7 +192,7 @@
 <joint name="base_footprint_fixed" type="fixed">
   <parent link="base_link"/>
   <child link="base_footprint"/>
-  <origin xyz="0 0 0"/>
+  <origin xyz="0 0 ${base_footprint_offset_z}"/>
 </joint>
     
 <!-- NAV_LINK TO BASE_LINK -->
@@ -221,7 +221,7 @@
 <joint name="imu_base_fixed" type="fixed">
   <parent link="base_link"/>
   <child link="imu_link"/>
-  <origin xyz="0 0 0"/>
+  <origin xyz="${imu_offset_x} 0 ${imu_offset_z}"/>
 </joint>
 
 <!-- IMU_FRAME TO IMU_LINK -->

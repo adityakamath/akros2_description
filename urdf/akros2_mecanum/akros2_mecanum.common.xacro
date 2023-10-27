@@ -1,19 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <robot name="mecanum_common" xmlns:xacro="http://ros.org/wiki/xacro">
+<!-- All values below are based on CAD model (Fusion 360) -->
     
 <xacro:property name="pi_by_two" value="1.5707963" />
 <xacro:property name="minus_pi_by_two" value="-1.5707963" />
     
 <xacro:property name="base_mass" value="2.0" /> <!-- Guesstimate, needs to be measured -->
-<xacro:property name="base_length" value="0.210" />
-<xacro:property name="base_width" value="0.154" /> <!-- Change 0.154 to 0.174 to include motor shafts and emergency button. NB: Geometry intersects wheels -->
+<xacro:property name="base_length" value="0.21038" />
+<xacro:property name="base_width" value="0.1585" /> <!-- Change 0.1585 to 0.2 to include motor shafts and emergency button. NB: Geometry intersects wheels -->
 <xacro:property name="base_height" value="0.099" />
-<xacro:property name="base_offset_x" value="0.003" />
+<xacro:property name="base_offset_x" value="0.00598" />
  
+<xacro:property name="nav_offset_z" value="-0.099" />
 <xacro:property name="nav_mass" value="0.5" /> <!-- Guesstimate, needs to be measured -->
-<xacro:property name="nav_length" value="0.2" />
-<xacro:property name="nav_width" value="0.154" />
-<xacro:property name="nav_height" value="0.031" />
+<xacro:property name="nav_length" value="0.2004" />
+<xacro:property name="nav_width" value="0.1545" />
+<xacro:property name="nav_height" value="0.03065" />
+    
+<xacro:property name="imu_offset_x" value="0.0562" />
+<xacro:property name="imu_offset_z" value="0.094" />
     
 <xacro:property name="laser_mass" value="0.12" />
 <xacro:property name="laser_length" value="0.038" />
@@ -24,11 +29,12 @@
 <xacro:property name="wheel_mass" value="0.075" />
 <xacro:property name="wheel_height" value="0.034" />
 
+<xacro:property name="base_footprint_offset_z" value="-0.015278" />
 <xacro:property name="nav_laser_offset_x" value="0.0632" />
 <xacro:property name="laser_frame_offset_z" value="0.0255" />
 
 <xacro:property name="joint_offset_x" value="0.0495" />
-<xacro:property name="joint_offset_y" value="0.078" />
+<xacro:property name="joint_offset_y" value="0.08173" />
 <xacro:property name="joint_offset_z" value="0.021" />
     
 <xacro:macro name="cylinder_inertia" params="m r h">

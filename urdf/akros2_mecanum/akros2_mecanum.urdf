@@ -164,10 +164,9 @@
       <material name="White"/>
     </visual>
     <collision>
-      <origin rpy="0 0 0" xyz="0.003 0 0.0495"/>
-      <!-- If needed: offset from ground = 0.0278 -->
+      <origin rpy="0 0 0" xyz="0.00299 0 0.0495"/>
       <geometry>
-        <box size="0.21 0.154 0.099"/>
+        <box size="0.21038 0.1585 0.099"/>
       </geometry>
     </collision>
   </link>
@@ -195,10 +194,9 @@
       <material name="DarkGrey"/>
     </visual>
     <collision>
-      <origin rpy="0 0 0" xyz="0 0 0.0155"/>
-      <!-- If needed: offset from base_link = -0.099 -->
+      <origin rpy="0 0 0" xyz="0 0 0.015325"/>
       <geometry>
-        <box size="0.2 0.154 0.031"/>
+        <box size="0.2004 0.1545 0.03065"/>
       </geometry>
     </collision>
   </link>
@@ -244,7 +242,6 @@
     </visual>
     <collision>
       <origin rpy="1.5707963 0 0" xyz="0 0.017 0"/>
-      <!-- If needed: offset from joint = 0.01 -->
       <geometry>
         <cylinder length="0.034" radius="0.038"/>
       </geometry>
@@ -265,7 +262,6 @@
     </visual>
     <collision>
       <origin rpy="1.5707963 0 0" xyz="0 0.017 0"/>
-      <!-- If needed: offset from joint = 0.01 -->
       <geometry>
         <cylinder length="0.034" radius="0.038"/>
       </geometry>
@@ -286,7 +282,6 @@
     </visual>
     <collision>
       <origin rpy="1.5707963 0 0" xyz="0 -0.017 0"/>
-      <!-- If needed: offset from joint = 0.01 -->
       <geometry>
         <cylinder length="0.034" radius="0.038"/>
       </geometry>
@@ -307,7 +302,6 @@
     </visual>
     <collision>
       <origin rpy="1.5707963 0 0" xyz="0 -0.017 0"/>
-      <!-- If needed: offset from joint = 0.01 -->
       <geometry>
         <cylinder length="0.034" radius="0.038"/>
       </geometry>
@@ -324,7 +318,7 @@
   <joint name="base_footprint_fixed" type="fixed">
     <parent link="base_link"/>
     <child link="base_footprint"/>
-    <origin xyz="0 0 0"/>
+    <origin xyz="0 0 -0.015278"/>
   </joint>
   <!-- NAV_LINK TO BASE_LINK -->
   <joint name="base_nav_fixed" type="fixed">
@@ -349,7 +343,7 @@
   <joint name="imu_base_fixed" type="fixed">
     <parent link="base_link"/>
     <child link="imu_link"/>
-    <origin xyz="0 0 0"/>
+    <origin xyz="0.0562 0 0.094"/>
   </joint>
   <!-- IMU_FRAME TO IMU_LINK -->
   <joint name="imu_frame_fixed" type="fixed">
@@ -361,28 +355,28 @@
   <joint name="joint_lf" type="continuous">
     <parent link="base_link"/>
     <child link="wheel_lf"/>
-    <origin rpy="0 0 0" xyz="0.0495 0.078 0.021"/>
+    <origin rpy="0 0 0" xyz="0.0495 0.08173 0.021"/>
     <axis xyz="0 1 0"/>
   </joint>
   <!-- WHEEL_LB TO BASE_LINK -->
   <joint name="joint_lb" type="continuous">
     <parent link="base_link"/>
     <child link="wheel_lb"/>
-    <origin rpy="0 0 0" xyz="-0.0495 0.078 0.021"/>
+    <origin rpy="0 0 0" xyz="-0.0495 0.08173 0.021"/>
     <axis xyz="0 1 0"/>
   </joint>
   <!-- WHEEL_RF TO BASE_LINK -->
   <joint name="joint_rf" type="continuous">
     <parent link="base_link"/>
     <child link="wheel_rf"/>
-    <origin rpy="0 0 0" xyz="0.0495 -0.078 0.021"/>
+    <origin rpy="0 0 0" xyz="0.0495 -0.08173 0.021"/>
     <axis xyz="0 1 0"/>
   </joint>
   <!-- WHEEL_RB TO BASE_LINK -->
   <joint name="joint_rb" type="continuous">
     <parent link="base_link"/>
     <child link="wheel_rb"/>
-    <origin rpy="0 0 0" xyz="-0.0495 -0.078 0.021"/>
+    <origin rpy="0 0 0" xyz="-0.0495 -0.08173 0.021"/>
     <axis xyz="0 1 0"/>
   </joint>
 </robot>
