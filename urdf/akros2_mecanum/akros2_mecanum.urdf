@@ -11,7 +11,7 @@
     <color rgba="0.35 0.35 0.35 1"/>
   </material>
   <material name="BaseLinkColor">
-    <color rgba="0.5 0.5 0.5 1"/>
+    <color rgba="0.5 0.5 0.5 0.95"/>
   </material>
   <!-- WHEEL_LF TRANSMISSION -->
   <transmission name="trans_lf">
@@ -161,7 +161,7 @@
       <material name="BaseLinkColor"/>
     </visual>
     <collision>
-      <origin rpy="0 0 0" xyz="0.00299 0 0.0495"/>
+      <origin rpy="0 0 0" xyz="0.003 0 0.0495"/>
       <geometry>
         <box size="0.21038 0.1585 0.099"/>
       </geometry>

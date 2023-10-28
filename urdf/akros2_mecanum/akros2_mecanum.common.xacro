@@ -6,10 +6,10 @@
 <xacro:property name="minus_pi_by_two" value="-1.5707963" />
     
 <xacro:property name="base_mass" value="2.0" /> <!-- Guesstimate, needs to be measured -->
-<xacro:property name="base_length" value="0.21038" />
+<xacro:property name="base_length" value="0.2104" />
 <xacro:property name="base_width" value="0.1585" /> <!-- Change 0.1585 to 0.2 to include motor shafts and emergency button. NB: Geometry intersects wheels -->
 <xacro:property name="base_height" value="0.099" />
-<xacro:property name="base_offset_x" value="0.00598" />
+<xacro:property name="base_offset_x" value="0.006" />
  
 <xacro:property name="nav_offset_z" value="-0.099" />
 <xacro:property name="nav_mass" value="0.5" /> <!-- Guesstimate, needs to be measured -->
@@ -64,7 +64,7 @@
 </material>
 
 <material name="BaseLinkColor">
-    <color rgba="0.5 0.5 0.5 1"/>
+    <color rgba="0.5 0.5 0.5 0.95"/>
 </material>
 
 </robot>
