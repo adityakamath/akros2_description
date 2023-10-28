@@ -55,20 +55,16 @@
             izz="${2*m*r*r/5}" /> 
 </xacro:macro>
     
-<material name="FlatBlack">
+<material name="LaserColor">
     <color rgba="0.25 0.25 0.25 1"/>
 </material>
 
-<material name="DarkGrey">
+<material name="WheelsNavColor">
+    <color rgba="0.35 0.35 0.35 1"/>
+</material>
+
+<material name="BaseLinkColor">
     <color rgba="0.5 0.5 0.5 1"/>
-</material>
-
-<material name="Grey">
-    <color rgba="0.75 0.75 0.75 1"/>
-</material>
-
-<material name="White">
-     <color rgba="1 1 1 1"/>
 </material>
 
 </robot>

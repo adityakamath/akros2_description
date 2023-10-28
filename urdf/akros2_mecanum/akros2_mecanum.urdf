@@ -4,17 +4,14 @@
 <!-- |    EDITING THIS FILE BY HAND IS NOT RECOMMENDED                                 | -->
 <!-- =================================================================================== -->
 <robot name="akros2_mecanum">
-  <material name="FlatBlack">
+  <material name="LaserColor">
     <color rgba="0.25 0.25 0.25 1"/>
   </material>
-  <material name="DarkGrey">
+  <material name="WheelsNavColor">
+    <color rgba="0.35 0.35 0.35 1"/>
+  </material>
+  <material name="BaseLinkColor">
     <color rgba="0.5 0.5 0.5 1"/>
-  </material>
-  <material name="Grey">
-    <color rgba="0.75 0.75 0.75 1"/>
-  </material>
-  <material name="White">
-    <color rgba="1 1 1 1"/>
   </material>
   <!-- WHEEL_LF TRANSMISSION -->
   <transmission name="trans_lf">
@@ -61,7 +58,7 @@
     </actuator>
   </transmission>
   <gazebo reference="base_link">
-    <material>Gazebo/White</material>
+    <material>Gazebo/Grey</material>
   </gazebo>
   <gazebo reference="nav_link">
     <material>Gazebo/DarkGrey</material>
@@ -161,7 +158,7 @@
       <geometry>
         <mesh filename="package://akros2_description/meshes/akros2_mecanum/base_module.dae"/>
       </geometry>
-      <material name="White"/>
+      <material name="BaseLinkColor"/>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0.00299 0 0.0495"/>
@@ -191,7 +188,7 @@
       <geometry>
         <mesh filename="package://akros2_description/meshes/akros2_mecanum/navigation_module.dae"/>
       </geometry>
-      <material name="DarkGrey"/>
+      <material name="WheelsNavColor"/>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0.015325"/>
@@ -212,7 +209,7 @@
       <geometry>
         <mesh filename="package://akros2_description/meshes/akros2_mecanum/ld06.dae"/>
       </geometry>
-      <material name="FlatBlack"/>
+      <material name="LaserColor"/>
     </visual>
     <collision>
       <origin rpy="0 0 -1.5707963" xyz="0 0 0.0165"/>
@@ -238,7 +235,7 @@
       <geometry>
         <mesh filename="package://akros2_description/meshes/akros2_mecanum/wheel_lf.dae"/>
       </geometry>
-      <material name="FlatBlack"/>
+      <material name="WheelsNavColor"/>
     </visual>
     <collision>
       <origin rpy="1.5707963 0 0" xyz="0 0.017 0"/>
@@ -258,7 +255,7 @@
       <geometry>
         <mesh filename="package://akros2_description/meshes/akros2_mecanum/wheel_lb.dae"/>
       </geometry>
-      <material name="FlatBlack"/>
+      <material name="WheelsNavColor"/>
     </visual>
     <collision>
       <origin rpy="1.5707963 0 0" xyz="0 0.017 0"/>
@@ -278,7 +275,7 @@
       <geometry>
         <mesh filename="package://akros2_description/meshes/akros2_mecanum/wheel_rf.dae"/>
       </geometry>
-      <material name="FlatBlack"/>
+      <material name="WheelsNavColor"/>
     </visual>
     <collision>
       <origin rpy="1.5707963 0 0" xyz="0 -0.017 0"/>
@@ -298,7 +295,7 @@
       <geometry>
         <mesh filename="package://akros2_description/meshes/akros2_mecanum/wheel_rb.dae"/>
       </geometry>
-      <material name="FlatBlack"/>
+      <material name="WheelsNavColor"/>
     </visual>
     <collision>
       <origin rpy="1.5707963 0 0" xyz="0 -0.017 0"/>

@@ -21,7 +21,7 @@
     <geometry>
       <mesh filename="${mesh_path}base_module.dae" />
     </geometry>
-   <material name="White"/>
+   <material name="BaseLinkColor"/>
   </visual>
   <collision>
     <origin xyz="${base_offset_x/2} 0 ${base_height/2}" rpy="0 0 0" />
@@ -54,7 +54,7 @@
     <geometry>
       <mesh filename="${mesh_path}navigation_module.dae" />
     </geometry>
-    <material name="DarkGrey"/>
+    <material name="WheelsNavColor"/>
   </visual>
   <collision>
     <origin xyz="0 0 ${nav_height/2}" rpy="0 0 0" />
@@ -76,7 +76,7 @@
     <geometry>
       <mesh filename="${mesh_path}ld06.dae" />
     </geometry>
-    <material name="FlatBlack"/>
+    <material name="LaserColor"/>
   </visual>
   <collision>
     <origin xyz="0 0 ${laser_height/2}" rpy="0 0 ${minus_pi_by_two}" />
@@ -106,7 +106,7 @@
     <geometry>
       <mesh filename="${mesh_path}wheel_lf.dae" />
     </geometry>
-    <material name="FlatBlack"/>
+    <material name="WheelsNavColor"/>
   </visual>
   <collision>
     <origin xyz="0 ${wheel_height/2} 0" rpy="${pi_by_two} 0 0" />
@@ -127,7 +127,7 @@
     <geometry>
       <mesh filename="${mesh_path}wheel_lb.dae" />
     </geometry>
-    <material name="FlatBlack"/>
+    <material name="WheelsNavColor"/>
   </visual>
   <collision>
     <origin xyz="0 ${wheel_height/2} 0" rpy="${pi_by_two} 0 0" />
@@ -148,7 +148,7 @@
     <geometry>
       <mesh filename="${mesh_path}wheel_rf.dae" />
     </geometry>
-    <material name="FlatBlack"/>
+    <material name="WheelsNavColor"/>
   </visual>
   <collision>
     <origin xyz="0 ${-1*(wheel_height/2)} 0" rpy="${pi_by_two} 0 0" />
@@ -169,7 +169,7 @@
     <geometry>
       <mesh filename="${mesh_path}wheel_rb.dae" />
     </geometry>
-    <material name="FlatBlack"/>
+    <material name="WheelsNavColor"/>
   </visual>
   <collision>
     <origin xyz="0 ${-1*(wheel_height/2)} 0" rpy="${pi_by_two} 0 0" />
