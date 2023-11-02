@@ -13,7 +13,7 @@
  
 <xacro:property name="nav_offset_z" value="-0.099" />
 <xacro:property name="nav_mass" value="0.5" /> <!-- Guesstimate, needs to be measured -->
-<xacro:property name="nav_length" value="0.2004" />
+<xacro:property name="nav_length" value="0.2024" /> <!-- Actual length without padding = 0.2004 -->
 <xacro:property name="nav_width" value="0.1565" /> <!-- Actual width without padding = 0.1545-->
 <xacro:property name="nav_height" value="0.03065" />
     
