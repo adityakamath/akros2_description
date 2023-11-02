@@ -34,7 +34,7 @@
 <xacro:property name="laser_frame_offset_z" value="0.0255" />
 
 <xacro:property name="joint_offset_x" value="0.0495" />
-<xacro:property name="joint_offset_y" value="0.08173" />
+<xacro:property name="joint_offset_y" value="0.0854225" />
 <xacro:property name="joint_offset_z" value="0.021" />
     
 <xacro:macro name="cylinder_inertia" params="m r h">
