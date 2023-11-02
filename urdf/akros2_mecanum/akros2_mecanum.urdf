@@ -163,7 +163,7 @@
     <collision>
       <origin rpy="0 0 0" xyz="0.003 0 0.0495"/>
       <geometry>
-        <box size="0.20638 0.1585 0.099"/>
+        <box size="0.20838 0.1565 0.099"/>
       </geometry>
     </collision>
   </link>
@@ -193,7 +193,7 @@
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0.015325"/>
       <geometry>
-        <box size="0.2004 0.1545 0.03065"/>
+        <box size="0.2024 0.1565 0.03065"/>
       </geometry>
     </collision>
   </link>
@@ -240,7 +240,7 @@
     <collision>
       <origin rpy="1.5707963 0 0" xyz="0 0.017 0"/>
       <geometry>
-        <cylinder length="0.0315" radius="0.036"/>
+        <cylinder length="0.034" radius="0.0385"/>
       </geometry>
     </collision>
   </link>
@@ -260,7 +260,7 @@
     <collision>
       <origin rpy="1.5707963 0 0" xyz="0 0.017 0"/>
       <geometry>
-        <cylinder length="0.0315" radius="0.036"/>
+        <cylinder length="0.034" radius="0.0385"/>
       </geometry>
     </collision>
   </link>
@@ -280,7 +280,7 @@
     <collision>
       <origin rpy="1.5707963 0 0" xyz="0 -0.017 0"/>
       <geometry>
-        <cylinder length="0.0315" radius="0.036"/>
+        <cylinder length="0.034" radius="0.0385"/>
       </geometry>
     </collision>
   </link>
@@ -300,7 +300,7 @@
     <collision>
       <origin rpy="1.5707963 0 0" xyz="0 -0.017 0"/>
       <geometry>
-        <cylinder length="0.0315" radius="0.036"/>
+        <cylinder length="0.034" radius="0.0385"/>
       </geometry>
     </collision>
   </link>
@@ -315,7 +315,7 @@
   <joint name="base_footprint_fixed" type="fixed">
     <parent link="base_link"/>
     <child link="base_footprint"/>
-    <origin xyz="0 0 -0.015278"/>
+    <origin xyz="0 0 -0.017877"/>
   </joint>
   <!-- NAV_LINK TO BASE_LINK -->
   <joint name="base_nav_fixed" type="fixed">
@@ -352,28 +352,28 @@
   <joint name="joint_lf" type="continuous">
     <parent link="base_link"/>
     <child link="wheel_lf"/>
-    <origin rpy="0 0 0" xyz="0.0495 0.08173 0.021"/>
+    <origin rpy="0 0 0" xyz="0.0495 0.0854225 0.021"/>
     <axis xyz="0 1 0"/>
   </joint>
   <!-- WHEEL_LB TO BASE_LINK -->
   <joint name="joint_lb" type="continuous">
     <parent link="base_link"/>
     <child link="wheel_lb"/>
-    <origin rpy="0 0 0" xyz="-0.0495 0.08173 0.021"/>
+    <origin rpy="0 0 0" xyz="-0.0495 0.0854225 0.021"/>
     <axis xyz="0 1 0"/>
   </joint>
   <!-- WHEEL_RF TO BASE_LINK -->
   <joint name="joint_rf" type="continuous">
     <parent link="base_link"/>
     <child link="wheel_rf"/>
-    <origin rpy="0 0 0" xyz="0.0495 -0.08173 0.021"/>
+    <origin rpy="0 0 0" xyz="0.0495 -0.0854225 0.021"/>
     <axis xyz="0 1 0"/>
   </joint>
   <!-- WHEEL_RB TO BASE_LINK -->
   <joint name="joint_rb" type="continuous">
     <parent link="base_link"/>
     <child link="wheel_rb"/>
-    <origin rpy="0 0 0" xyz="-0.0495 -0.08173 0.021"/>
+    <origin rpy="0 0 0" xyz="-0.0495 -0.0854225 0.021"/>
     <axis xyz="0 1 0"/>
   </joint>
 </robot>
