@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <robot name="mecanum_common" xmlns:xacro="http://ros.org/wiki/xacro">
-<!-- All values below are based on CAD model (Fusion 360). 1mm added on each side (2mm total) for length, width (but not height) as padding. -->
+<!-- All values below are based on CAD model (Fusion 360). 1mm added on each side (2mm total) for length and width (but not height) as padding. -->
     
 <xacro:property name="pi_by_two" value="1.5707963" />
 <xacro:property name="minus_pi_by_two" value="-1.5707963" />
