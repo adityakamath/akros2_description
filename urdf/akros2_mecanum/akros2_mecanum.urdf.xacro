@@ -99,7 +99,7 @@
 <link name="wheel_lf">
   <inertial>
     <mass value="${wheel_mass}"/>
-    <xacro:cylinder_inertia m="${wheel_mass}" r="${wheel_radius}" h="${wheel_height}"/>
+    <xacro:cylinder_inertia m="${wheel_mass}" r="${wheel_radius}" h="${wheel_thickness}"/>
   </inertial>
   <visual>
     <origin xyz="0 0 0" rpy="0 0 0" />
@@ -109,9 +109,9 @@
     <material name="WheelsNavColor"/>
   </visual>
   <collision>
-    <origin xyz="0 ${wheel_height/2} 0" rpy="${pi_by_two} 0 0" />
+    <origin xyz="0 ${wheel_thickness/2} 0" rpy="${pi_by_two} 0 0" />
     <geometry>
-      <cylinder length="${wheel_height}" radius="${wheel_radius}"/>
+      <cylinder length="${wheel_thickness}" radius="${wheel_radius}"/>
     </geometry>
   </collision>
 </link>
@@ -120,7 +120,7 @@
 <link name="wheel_lb">
   <inertial>
     <mass value="${wheel_mass}"/>
-    <xacro:cylinder_inertia m="${wheel_mass}" r="${wheel_radius}" h="${wheel_height}"/>
+    <xacro:cylinder_inertia m="${wheel_mass}" r="${wheel_radius}" h="${wheel_thickness}"/>
   </inertial>
   <visual>
     <origin xyz="0 0 0" rpy="0 0 0" />
@@ -130,9 +130,9 @@
     <material name="WheelsNavColor"/>
   </visual>
   <collision>
-    <origin xyz="0 ${wheel_height/2} 0" rpy="${pi_by_two} 0 0" />
+    <origin xyz="0 ${wheel_thickness/2} 0" rpy="${pi_by_two} 0 0" />
     <geometry>
-      <cylinder length="${wheel_height}" radius="${wheel_radius}"/>
+      <cylinder length="${wheel_thickness}" radius="${wheel_radius}"/>
     </geometry>
   </collision>
 </link>
@@ -141,7 +141,7 @@
 <link name="wheel_rf">
   <inertial>
     <mass value="${wheel_mass}"/>
-    <xacro:cylinder_inertia m="${wheel_mass}" r="${wheel_radius}" h="${wheel_height}"/>
+    <xacro:cylinder_inertia m="${wheel_mass}" r="${wheel_radius}" h="${wheel_thickness}"/>
   </inertial>
   <visual>
     <origin xyz="0 0 0" rpy="0 0 0" />
@@ -151,9 +151,9 @@
     <material name="WheelsNavColor"/>
   </visual>
   <collision>
-    <origin xyz="0 ${-1*(wheel_height/2)} 0" rpy="${pi_by_two} 0 0" />
+    <origin xyz="0 ${-1*(wheel_thickness/2)} 0" rpy="${pi_by_two} 0 0" />
     <geometry>
-      <cylinder length="${wheel_height}" radius="${wheel_radius}"/>
+      <cylinder length="${wheel_thickness}" radius="${wheel_radius}"/>
     </geometry>
   </collision>
 </link>
@@ -162,7 +162,7 @@
 <link name="wheel_rb">
   <inertial>
     <mass value="${wheel_mass}"/>
-    <xacro:cylinder_inertia m="${wheel_mass}" r="${wheel_radius}" h="${wheel_height}"/>
+    <xacro:cylinder_inertia m="${wheel_mass}" r="${wheel_radius}" h="${wheel_thickness}"/>
   </inertial>
   <visual>
     <origin xyz="0 0 0" rpy="0 0 0" />
@@ -172,9 +172,9 @@
     <material name="WheelsNavColor"/>
   </visual>
   <collision>
-    <origin xyz="0 ${-1*(wheel_height/2)} 0" rpy="${pi_by_two} 0 0" />
+    <origin xyz="0 ${-1*(wheel_thickness/2)} 0" rpy="${pi_by_two} 0 0" />
     <geometry>
-      <cylinder length="${wheel_height}" radius="${wheel_radius}"/>
+      <cylinder length="${wheel_thickness}" radius="${wheel_radius}"/>
     </geometry>
   </collision>
 </link>
