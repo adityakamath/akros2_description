@@ -29,7 +29,7 @@
 <xacro:property name="wheel_mass" value="0.075" /> <!-- Guesstimate, needs to be measured -->
 <xacro:property name="wheel_height" value="0.0315" /> <!-- Actual height is 0.034 -->
 
-<xacro:property name="base_footprint_offset_z" value="-0.015278" />
+<xacro:property name="base_footprint_offset_z" value="-0.015377" /> <!-- Actual offset is -0.017877 -->
 <xacro:property name="nav_laser_offset_x" value="0.0632" />
 <xacro:property name="laser_frame_offset_z" value="0.0255" />
 
