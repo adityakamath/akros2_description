@@ -29,7 +29,7 @@
 <xacro:property name="wheel_mass" value="0.075" /> <!-- Guesstimate, needs to be measured -->
 <xacro:property name="wheel_thickness" value="0.034" /> <!-- Actual thickness = 0.034, CAD thickness = 0.0315 -->
 
-<xacro:property name="base_footprint_offset_z" value="-0.015377" /> <!-- Actual offset = -0.017877 -->
+<xacro:property name="base_footprint_offset_z" value="-0.015377" /> <!-- Actual offset = -0.017877, CAD offset = -0.015377 -->
 <xacro:property name="nav_laser_offset_x" value="0.0632" />
 <xacro:property name="laser_frame_offset_z" value="0.0255" />
 
