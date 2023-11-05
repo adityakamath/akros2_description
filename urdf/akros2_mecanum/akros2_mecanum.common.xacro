@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <robot name="mecanum_common" xmlns:xacro="http://ros.org/wiki/xacro">
-<!-- All values below are based on CAD model (Fusion 360). 1mm added on each side (2mm total) for length and width (but not height) as padding. -->
+<!-- All values below are based on CAD model (Fusion 360). 2mm added on each side (4mm total) for length and width (but not height) as padding. -->
     
 <xacro:property name="pi_by_two" value="1.5707963" />
 <xacro:property name="minus_pi_by_two" value="-1.5707963" />
     
 <xacro:property name="base_mass" value="2.0" /> <!-- Guesstimate, needs to be measured -->
-<xacro:property name="base_length" value="0.20838" /> <!-- Actual length without padding = 0.20638. Change to 0.21038 to include screw heads in collision (without padding). -->
-<xacro:property name="base_width" value="0.1565" /> <!-- Actual width without padding = 0.1545 without screw heads. Change to 0.2 to include motor shafts and emergency button (without padding)-->
+<xacro:property name="base_length" value="0.21038" /> <!-- Actual length without padding = 0.20638. Change to 0.21038 to include screw heads in collision (without padding). -->
+<xacro:property name="base_width" value="0.1585" /> <!-- Actual width without padding = 0.1545 without screw heads. Change to 0.2 to include motor shafts and emergency button (without padding)-->
 <xacro:property name="base_height" value="0.099" />
 <xacro:property name="base_offset_x" value="0.006" />
  
 <xacro:property name="nav_offset_z" value="-0.099" />
 <xacro:property name="nav_mass" value="0.5" /> <!-- Guesstimate, needs to be measured -->
-<xacro:property name="nav_length" value="0.2024" /> <!-- Actual length without padding = 0.2004 -->
-<xacro:property name="nav_width" value="0.1565" /> <!-- Actual width without padding = 0.1545-->
+<xacro:property name="nav_length" value="0.2044" /> <!-- Actual length without padding = 0.2004 -->
+<xacro:property name="nav_width" value="0.1585" /> <!-- Actual width without padding = 0.1545-->
 <xacro:property name="nav_height" value="0.03065" />
     
 <xacro:property name="imu_offset_x" value="0.0562" />
 <xacro:property name="imu_offset_z" value="0.094" />
     
 <xacro:property name="laser_mass" value="0.12" />
-<xacro:property name="laser_length" value="0.04" /> <!-- Actual length without padding = 0.038 -->
-<xacro:property name="laser_width" value="0.0401" /> <!-- Actual width without padding = 0.0381 -->
+<xacro:property name="laser_length" value="0.042" /> <!-- Actual length without padding = 0.038 -->
+<xacro:property name="laser_width" value="0.0421" /> <!-- Actual width without padding = 0.0381 -->
 <xacro:property name="laser_height" value="0.033" />
 
 <xacro:property name="wheel_radius" value="0.0385" /> <!-- Actual radius = 0.0385, CAD radius = 0.036 -->
