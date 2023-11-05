@@ -163,7 +163,7 @@
     <collision>
       <origin rpy="0 0 0" xyz="0.003 0 0.0495"/>
       <geometry>
-        <box size="0.20838 0.1565 0.099"/>
+        <box size="0.21038 0.1585 0.099"/>
       </geometry>
     </collision>
   </link>
@@ -193,7 +193,7 @@
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0.015325"/>
       <geometry>
-        <box size="0.2024 0.1565 0.03065"/>
+        <box size="0.2044 0.1585 0.03065"/>
       </geometry>
     </collision>
   </link>
@@ -214,7 +214,7 @@
     <collision>
       <origin rpy="0 0 -1.5707963" xyz="0 0 0.0165"/>
       <geometry>
-        <box size="0.04 0.0401 0.033"/>
+        <box size="0.042 0.0421 0.033"/>
       </geometry>
     </collision>
   </link>
