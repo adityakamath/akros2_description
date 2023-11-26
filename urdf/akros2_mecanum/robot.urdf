@@ -221,8 +221,6 @@
   <!-- LASER_FRAME -->
   <link name="laser_frame"/>
   <!-- MPU9250 IMU_LINK -->
-  <link name="imu_link"/>
-  <!-- IMU_FRAME -->
   <link name="imu_frame"/>
   <!-- WHEEL LEFT FRONT -->
   <link name="wheel_lf">
@@ -339,14 +337,8 @@
   <!-- IMU_LINK TO BASE_LINK -->
   <joint name="imu_base_fixed" type="fixed">
     <parent link="base_link"/>
-    <child link="imu_link"/>
-    <origin xyz="0.0562 0 0.094"/>
-  </joint>
-  <!-- IMU_FRAME TO IMU_LINK -->
-  <joint name="imu_frame_fixed" type="fixed">
-    <parent link="imu_link"/>
     <child link="imu_frame"/>
-    <origin xyz="0 0 0"/>
+    <origin xyz="0.0562 0 0.094"/>
   </joint>
   <!-- WHEEL_LF TO BASE_LINK -->
   <joint name="joint_lf" type="continuous">
