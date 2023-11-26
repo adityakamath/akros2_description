@@ -13,7 +13,7 @@
   </actuator>
 </transmission>
  
-<!-- WHEEL_L (BACK) TRANSMISSION -->
+<!-- WHEEL_L TRANSMISSION -->
 <transmission name="trans_l">
   <type>transmission_interface/SimpleTransmission</type>
   <joint name="joint_l">
@@ -25,7 +25,7 @@
   </actuator>
 </transmission>
 
-<!-- WHEEL_R (BACK) TRANSMISSION -->
+<!-- WHEEL_R TRANSMISSION -->
 <transmission name="trans_r">
   <type>transmission_interface/SimpleTransmission</type>
   <joint name="joint_r">

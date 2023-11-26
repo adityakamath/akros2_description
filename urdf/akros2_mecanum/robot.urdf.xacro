@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <robot name="akros2_mecanum" xmlns:xacro="http://ros.org/wiki/xacro">
-<xacro:include filename="$(find akros2_description)/urdf/akros2_mecanum/akros2_mecanum.common.xacro"/>
-<xacro:include filename="$(find akros2_description)/urdf/akros2_mecanum/akros2_mecanum.control.xacro"/>
-<xacro:include filename="$(find akros2_description)/urdf/akros2_mecanum/akros2_mecanum.gazebo.xacro"/>
+<xacro:include filename="$(find akros2_description)/urdf/akros2_mecanum/robot.common.xacro"/>
+<xacro:include filename="$(find akros2_description)/urdf/akros2_mecanum/robot.control.xacro"/>
+<xacro:include filename="$(find akros2_description)/urdf/akros2_mecanum/robot.gazebo.xacro"/>
 
 <xacro:arg name="mesh_path" default="package://akros2_description/meshes/akros2_mecanum/" /> <!-- HTTPS URL also works here -->
 <xacro:arg name="unity" default="false" />
@@ -13,6 +13,9 @@
 </xacro:if>
 
 <!-- **** LINKS **** -->
+    
+<!-- BASE_FOOTPRINT -->    
+<link name="base_footprint"/>
 
 <!-- BASE_LINK -->
 <link name="base_link">
@@ -39,9 +42,6 @@
     <xacro:box_inertia m="${base_mass}" x="${base_length}" y="${base_width}" z="${base_height}"/>
   </inertial>
 </link>
-
-<!-- BASE_FOOTPRINT -->    
-<link name="base_footprint"/>
 
 <!-- NAV_LINK -->
 <link name="nav_link">
@@ -181,18 +181,18 @@
 
 <!-- **** JOINTS **** -->
     
+<!-- BASE_LINK TO BASE_FOOTPRINT -->
+<joint name="footprint_base_fixed" type="fixed">
+  <parent link="base_footprint"/>
+  <child link="base_link"/>
+  <origin xyz="0 0 ${footprint_base_offset_z}"/>
+</joint>
+    
 <!-- BASE_LINK_INERTIAL TO BASE_LINK -->
 <joint name="base_inertial_fixed" type="fixed">
   <parent link="base_link"/>
   <child link="base_link_inertial"/>
   <origin xyz="0 0 0"/>
-</joint>
-    
-<!-- BASE_FOOTPRINT TO BASE_LINK -->
-<joint name="base_footprint_fixed" type="fixed">
-  <parent link="base_link"/>
-  <child link="base_footprint"/>
-  <origin xyz="0 0 ${base_footprint_offset_z}"/>
 </joint>
     
 <!-- NAV_LINK TO BASE_LINK -->

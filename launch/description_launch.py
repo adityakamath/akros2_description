@@ -23,11 +23,11 @@ from ament_index_python.packages import get_package_share_directory, get_package
 
 def generate_launch_description():
     mecanum_robot_description = ParameterValue(
-        Command(['xacro ', str(get_package_share_path('akros2_description') / 'urdf/akros2_mecanum/akros2_mecanum.urdf.xacro')]),
+        Command(['xacro ', str(get_package_share_path('akros2_description') / 'urdf/akros2_mecanum/robot.urdf.xacro')]),
         value_type=str)
     
     omni_robot_description = ParameterValue(
-        Command(['xacro ', str(get_package_share_path('akros2_description') / 'urdf/akros2_omni/akros2_omni.urdf.xacro')]),
+        Command(['xacro ', str(get_package_share_path('akros2_description') / 'urdf/akros2_omni/robot.urdf.xacro')]),
         value_type=str)
     
     return LaunchDescription([ 

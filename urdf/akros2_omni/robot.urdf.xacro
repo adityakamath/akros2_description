@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <robot name="akros2_omni" xmlns:xacro="http://ros.org/wiki/xacro">
-<xacro:include filename="$(find akros2_description)/urdf/akros2_omni/akros2_omni.common.xacro"/>
-<xacro:include filename="$(find akros2_description)/urdf/akros2_omni/akros2_omni.control.xacro"/>
-<xacro:include filename="$(find akros2_description)/urdf/akros2_omni/akros2_omni.gazebo.xacro"/>
+<xacro:include filename="$(find akros2_description)/urdf/akros2_omni/robot.common.xacro"/>
+<xacro:include filename="$(find akros2_description)/urdf/akros2_omni/robot.control.xacro"/>
+<xacro:include filename="$(find akros2_description)/urdf/akros2_omni/robot.gazebo.xacro"/>
 
 <xacro:arg name="mesh_path" default="package://akros2_description/meshes/akros2_omni/" /> <!-- HTTPS URL also works here -->
 <xacro:arg name="unity" default="false" />
@@ -13,6 +13,9 @@
 </xacro:if>
 
 <!-- **** LINKS **** -->
+    
+<!-- BASE_FOOTPRINT -->    
+<link name="base_footprint"/>
 
 <!-- BASE_LINK -->
 <link name="base_link">
@@ -21,10 +24,10 @@
     <geometry>
       <mesh filename="${mesh_path}base_module.dae" />
     </geometry>
-   <material name="White"/>
+   <material name="BaseLinkColor"/>
   </visual>
   <collision>
-    <origin xyz="${base_offset_x} 0 ${base_height/2}" rpy="0 0 0" /> <!-- If needed: offset from ground = 0.0278 -->
+    <origin xyz="${base_offset_x/2} 0 ${base_height/2}" rpy="0 0 0" />
     <geometry>
       <box size="${base_length} ${base_width} ${base_height}"/>
     </geometry>
@@ -40,9 +43,6 @@
   </inertial>
 </link>
 
-<!-- BASE_FOOTPRINT -->    
-<link name="base_footprint"/>
-
 <!-- NAV_LINK -->
 <link name="nav_link">
   <inertial>
@@ -50,14 +50,14 @@
     <xacro:box_inertia m="${nav_mass}" x="${nav_length}" y="${nav_width}" z="${nav_height}"/>
   </inertial>
   <visual>
-    <origin xyz="0 0 -0.099" rpy="0 0 0" />
+    <origin xyz="0 0 ${nav_offset_z}" rpy="0 0 0" />
     <geometry>
       <mesh filename="${mesh_path}navigation_module.dae" />
     </geometry>
-    <material name="DarkGrey"/>
+    <material name="WheelsNavColor"/>
   </visual>
   <collision>
-    <origin xyz="0 0 ${nav_height/2}" rpy="0 0 0" /> <!-- If needed: offset from base_link = -0.099 -->
+    <origin xyz="0 0 ${nav_height/2}" rpy="0 0 0" />
     <geometry>
       <box size="${nav_length} ${nav_width} ${nav_height}"/>
     </geometry>
@@ -76,7 +76,7 @@
     <geometry>
       <mesh filename="${mesh_path}ld06.dae" />
     </geometry>
-    <material name="FlatBlack"/>
+    <material name="LaserColor"/>
   </visual>
   <collision>
     <origin xyz="0 0 ${laser_height/2}" rpy="0 0 ${minus_pi_by_two}" />
@@ -99,78 +99,78 @@
 <link name="wheel_f">
   <inertial>
     <mass value="${wheel_mass}"/>
-    <xacro:cylinder_inertia m="${wheel_mass}" r="${wheel_radius}" h="${wheel_height}"/>
+    <xacro:cylinder_inertia m="${wheel_mass}" r="${wheel_radius}" h="${wheel_thickness}"/>
   </inertial>
   <visual>
     <origin xyz="0 0 0" rpy="0 0 0" />
     <geometry>
       <mesh filename="${mesh_path}wheel_f.dae" />
     </geometry>
-    <material name="FlatBlack"/>
+    <material name="WheelsNavColor"/>
   </visual>
   <collision>
-    <origin xyz="0 ${wheel_height/2} 0" rpy="${pi_by_two} 0 0" /><!-- If needed: offset from joint = 0.01 -->
+    <origin xyz="0 ${wheel_thickness/2} 0" rpy="${pi_by_two} 0 0" />
     <geometry>
-      <cylinder length="${wheel_height}" radius="${wheel_radius}"/>
+      <cylinder length="${wheel_thickness}" radius="${wheel_radius}"/>
     </geometry>
   </collision>
 </link>
 
-<!-- WHEEL LEFT (BACK) -->
+<!-- WHEEL LEFT -->
 <link name="wheel_l">
   <inertial>
     <mass value="${wheel_mass}"/>
-    <xacro:cylinder_inertia m="${wheel_mass}" r="${wheel_radius}" h="${wheel_height}"/>
+    <xacro:cylinder_inertia m="${wheel_mass}" r="${wheel_radius}" h="${wheel_thickness}"/>
   </inertial>
   <visual>
     <origin xyz="0 0 0" rpy="0 0 0" />
     <geometry>
       <mesh filename="${mesh_path}wheel_l.dae" />
     </geometry>
-    <material name="FlatBlack"/>
+    <material name="WheelsNavColor"/>
   </visual>
   <collision>
-    <origin xyz="0 ${wheel_height/2} 0" rpy="${pi_by_two} 0 0" /><!-- If needed: offset from joint = 0.01 -->
+    <origin xyz="0 ${wheel_thickness/2} 0" rpy="${pi_by_two} 0 0" />
     <geometry>
-      <cylinder length="${wheel_height}" radius="${wheel_radius}"/>
+      <cylinder length="${wheel_thickness}" radius="${wheel_radius}"/>
     </geometry>
   </collision>
 </link>
 
-<!-- WHEEL RIGHT (BACK) -->
+<!-- WHEEL RIGHT FRONT -->
 <link name="wheel_r">
   <inertial>
     <mass value="${wheel_mass}"/>
-    <xacro:cylinder_inertia m="${wheel_mass}" r="${wheel_radius}" h="${wheel_height}"/>
+    <xacro:cylinder_inertia m="${wheel_mass}" r="${wheel_radius}" h="${wheel_thickness}"/>
   </inertial>
   <visual>
     <origin xyz="0 0 0" rpy="0 0 0" />
     <geometry>
       <mesh filename="${mesh_path}wheel_r.dae" />
     </geometry>
-    <material name="FlatBlack"/>
+    <material name="WheelsNavColor"/>
   </visual>
   <collision>
-    <origin xyz="0 ${-1*(wheel_height/2)} 0" rpy="${pi_by_two} 0 0" /><!-- If needed: offset from joint = 0.01 -->
+    <origin xyz="0 ${-1*(wheel_thickness/2)} 0" rpy="${pi_by_two} 0 0" />
     <geometry>
-      <cylinder length="${wheel_height}" radius="${wheel_radius}"/>
+      <cylinder length="${wheel_thickness}" radius="${wheel_radius}"/>
     </geometry>
   </collision>
 </link>
 
 <!-- **** JOINTS **** -->
     
+<!-- BASE_LINK TO BASE_FOOTPRINT -->
+<joint name="footprint_base_fixed" type="fixed">
+  <parent link="base_footprint"/>
+  <child link="base_link"/>
+  <origin xyz="0 0 ${footprint_base_offset_z}"/>
+</joint>
+    
 <!-- BASE_LINK_INERTIAL TO BASE_LINK -->
 <joint name="base_inertial_fixed" type="fixed">
   <parent link="base_link"/>
   <child link="base_link_inertial"/>
-  <origin xyz="0 0 0"/>
-</joint>
-    
-<!-- BASE_FOOTPRINT TO BASE_LINK -->
-<joint name="base_footprint_fixed" type="fixed">
-  <parent link="base_link"/>
-  <child link="base_footprint"/>
   <origin xyz="0 0 0"/>
 </joint>
     
@@ -200,7 +200,7 @@
 <joint name="imu_base_fixed" type="fixed">
   <parent link="base_link"/>
   <child link="imu_link"/>
-  <origin xyz="0 0 0"/>
+  <origin xyz="${imu_offset_x} 0 ${imu_offset_z}"/>
 </joint>
 
 <!-- IMU_FRAME TO IMU_LINK -->
@@ -218,7 +218,7 @@
   <axis xyz="0 1 0" />
 </joint>
     
-<!-- WHEEL_L (BACK) TO BASE_LINK -->
+<!-- WHEEL_L TO BASE_LINK -->
 <joint name="joint_l" type="continuous">
   <parent link="base_link" />
   <child link="wheel_l" />
@@ -226,12 +226,12 @@
   <axis xyz="0 1 0" />
 </joint>
    
-<!-- WHEEL_R (BACK) TO BASE_LINK -->
+<!-- WHEEL_R TO BASE_LINK -->
 <joint name="joint_r" type="continuous">
   <parent link="base_link" />
   <child link="wheel_r" />
   <origin xyz="${joint_offset_x} ${-1*joint_offset_y} ${joint_offset_z}" rpy="0 0 0" />
   <axis xyz="0 1 0" />
-</joint>
+</joint> 
 
 </robot>

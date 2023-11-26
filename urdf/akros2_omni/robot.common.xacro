@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<robot name="mecanum_common" xmlns:xacro="http://ros.org/wiki/xacro">
+<robot name="omni_common" xmlns:xacro="http://ros.org/wiki/xacro">
 <!-- All values below are based on CAD model (Fusion 360). 2mm added on each side (4mm total) for length and width (but not height) as padding. -->
     
 <xacro:property name="pi_by_two" value="1.5707963" />
@@ -29,7 +29,7 @@
 <xacro:property name="wheel_mass" value="0.075" /> <!-- Guesstimate, needs to be measured -->
 <xacro:property name="wheel_thickness" value="0.034" /> <!-- Actual thickness = 0.034, CAD thickness = 0.0315 -->
 
-<xacro:property name="base_footprint_offset_z" value="-0.017877" /> <!-- Actual offset = -0.017877, CAD offset = -0.015377 -->
+<xacro:property name="footprint_base_offset_z" value="0.017877" /> <!-- Actual offset = 0.017877, CAD offset = 0.015377 -->
 <xacro:property name="nav_laser_offset_x" value="0.0632" />
 <xacro:property name="laser_frame_offset_z" value="0.0255" />
 

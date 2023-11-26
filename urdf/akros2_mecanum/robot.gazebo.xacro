@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<robot name="omni_gazebo" xmlns:xacro="http://ros.org/wiki/xacro">
+<robot name="mecanum_gazebo" xmlns:xacro="http://ros.org/wiki/xacro">
 
 <gazebo reference="base_link">
-  <material>Gazebo/White</material>
+  <material>Gazebo/Grey</material>
 </gazebo>
 
 <gazebo reference="nav_link">
@@ -13,15 +13,19 @@
   <material>Gazebo/FlatBlack</material>
 </gazebo>
 
-<gazebo reference="wheel_f">
+<gazebo reference="wheel_lf">
   <material>Gazebo/DarkGrey</material>
 </gazebo>
     
-<gazebo reference="wheel_l">
+<gazebo reference="wheel_lb">
   <material>Gazebo/DarkGrey</material>
 </gazebo>
 
-<gazebo reference="wheel_r">
+<gazebo reference="wheel_rf">
+  <material>Gazebo/DarkGrey</material>
+</gazebo>
+
+<gazebo reference="wheel_rb">
   <material>Gazebo/DarkGrey</material>
 </gazebo>
     
@@ -92,7 +96,7 @@
     <odometryTopic>odom</odometryTopic>
     <odometryFrame>odom</odometryFrame>
     <odometryRate>100.0</odometryRate>
-    <robotBaseFrame>base_link</robotBaseFrame>
+    <robotBaseFrame>base_footprint</robotBaseFrame>
     <publishTF>false</publishTF>
   </plugin>
 </gazebo>
