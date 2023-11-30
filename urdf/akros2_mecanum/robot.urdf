@@ -112,8 +112,8 @@
   <gazebo>
     <plugin filename="libgazebo_ros_imu.so" name="imu_plugin">
       <alwaysOn>true</alwaysOn>
-      <bodyName>imu_frame</bodyName>
-      <frameName>imu_frame</frameName>
+      <bodyName>imu_link</bodyName>
+      <frameName>imu_link</frameName>
       <topicName>imu</topicName>
       <serviceName>imu_service</serviceName>
       <gaussianNoise>0.0</gaussianNoise>
@@ -221,7 +221,7 @@
   <!-- LASER_FRAME -->
   <link name="laser_frame"/>
   <!-- MPU9250 IMU_LINK -->
-  <link name="imu_frame"/>
+  <link name="imu_link"/>
   <!-- WHEEL LEFT FRONT -->
   <link name="wheel_lf">
     <inertial>
@@ -337,7 +337,7 @@
   <!-- IMU_LINK TO BASE_LINK -->
   <joint name="imu_base_fixed" type="fixed">
     <parent link="base_link"/>
-    <child link="imu_frame"/>
+    <child link="imu_link"/>
     <origin xyz="0.0562 0 0.094"/>
   </joint>
   <!-- WHEEL_LF TO BASE_LINK -->

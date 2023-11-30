@@ -92,9 +92,6 @@
 <!-- MPU9250 IMU_LINK -->
 <link name="imu_link"/>
 
-<!-- IMU_FRAME -->
-<link name="imu_frame"/>
-
 <!-- WHEEL FRONT -->
 <link name="wheel_f">
   <inertial>
@@ -201,13 +198,6 @@
   <parent link="base_link"/>
   <child link="imu_link"/>
   <origin xyz="${imu_offset_x} 0 ${imu_offset_z}"/>
-</joint>
-
-<!-- IMU_FRAME TO IMU_LINK -->
-<joint name="imu_frame_fixed" type="fixed">
-  <parent link="imu_link"/>
-  <child link="imu_frame"/>
-  <origin xyz="0 0 0"/>
 </joint>
 
 <!-- WHEEL_F TO BASE_LINK -->
