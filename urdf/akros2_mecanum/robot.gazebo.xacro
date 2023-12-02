@@ -13,6 +13,10 @@
   <material>Gazebo/FlatBlack</material>
 </gazebo>
 
+<gazebo reference="cam_link">
+  <material>Gazebo/FlatBlack</material>
+</gazebo>
+
 <gazebo reference="wheel_lf">
   <material>Gazebo/DarkGrey</material>
 </gazebo>

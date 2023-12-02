@@ -76,7 +76,7 @@
     <geometry>
       <mesh filename="${mesh_path}ld06.dae" />
     </geometry>
-    <material name="LaserColor"/>
+    <material name="SensorColor"/>
   </visual>
   <collision>
     <origin xyz="0 0 ${laser_height/2}" rpy="0 0 ${minus_pi_by_two}" />
@@ -88,6 +88,31 @@
 
 <!-- LASER_FRAME -->
 <link name="laser_frame"/>
+
+<!-- USB CAMERA MODULE CAM_LINK -->
+<link name="cam_link">
+  <inertial>
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <mass value="${cam_mass}" />
+    <xacro:box_inertia m="${cam_mass}" x="${cam_length}" y="${cam_width}" z="${cam_height}"/>
+  </inertial>
+  <visual>
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <geometry>
+      <mesh filename="${mesh_path}cam_module.dae" />
+    </geometry>
+    <material name="SensorColor"/>
+  </visual>
+  <collision>
+    <origin xyz="${cam_length/2} 0 0" rpy="0 0 0" />
+    <geometry>
+      <box size="${cam_length} ${laser_width} ${laser_height}"/>
+    </geometry>
+  </collision>
+</link>
+
+<!-- USB CAMERA OPTICAL FRAME CAM_FRAME -->
+<link name="cam_frame"/>
     
 <!-- MPU9250 IMU_LINK -->
 <link name="imu_link"/>
@@ -212,6 +237,20 @@
   <parent link="laser_link"/>
   <child link="laser_frame"/>
   <origin xyz="0 0 ${laser_frame_offset_z}"/>
+</joint>
+
+<!-- CAM_LINK TO NAV_LINK -->
+<joint name="nav_cam_fixed" type="fixed">
+  <parent link="nav_link"/>
+  <child link="cam_link"/>
+  <origin xyz="${nav_cam_offset_x} 0 ${nav_cam_offset_z}"/>
+</joint>
+
+<!-- CAM_FRAME TO CAM_LINK -->
+<joint name="cam_frame_fixed" type="fixed">
+  <parent link="cam_link"/>
+  <child link="cam_frame"/>
+  <origin xyz="${cam_frame_offset_x} 0 0" rpy="${minus_pi_by_two} 0 ${minus_pi_by_two}"/>
 </joint>
     
 <!-- IMU_LINK TO BASE_LINK -->

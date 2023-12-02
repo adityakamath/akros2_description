@@ -23,7 +23,12 @@
 <xacro:property name="laser_mass" value="0.12" />
 <xacro:property name="laser_length" value="0.042" /> <!-- Actual length without padding = 0.038 -->
 <xacro:property name="laser_width" value="0.0421" /> <!-- Actual width without padding = 0.0381 -->
-<xacro:property name="laser_height" value="0.033" />
+<xacro:property name="laser_height" value="0.033"/>
+
+<xacro:property name="cam_mass" value="0.025" />
+<xacro:property name="cam_length" value="0.0161" /> <!-- Actual length without padding = 0.0121 -->
+<xacro:property name="cam_width" value="0.0730" /> <!-- Actual width without padding = 0.0690 -->
+<xacro:property name="cam_height" value="0.01" />
 
 <xacro:property name="wheel_radius" value="0.0385" /> <!-- Actual radius = 0.0385, CAD radius = 0.036 -->
 <xacro:property name="wheel_mass" value="0.075" /> <!-- Guesstimate, needs to be measured -->
@@ -32,6 +37,10 @@
 <xacro:property name="footprint_base_offset_z" value="0.017877" /> <!-- Actual offset = 0.017877, CAD offset = 0.015377 -->
 <xacro:property name="nav_laser_offset_x" value="0.0632" />
 <xacro:property name="laser_frame_offset_z" value="0.0255" />
+<xacro:property name="nav_cam_offset_x" value="0.0877" />
+<xacro:property name="nav_cam_offset_z" value="0.01525" />
+<xacro:property name="cam_frame_offset_x" value="0.0065" />
+
 
 <xacro:property name="joint_offset_x" value="0.0495" />
 <xacro:property name="joint_offset_y" value="0.0854225" />
@@ -55,7 +64,7 @@
             izz="${2*m*r*r/5}" /> 
 </xacro:macro>
     
-<material name="LaserColor">
+<material name="SensorColor">
     <color rgba="0.2 0.2 0.2 1"/>
 </material>
 
