@@ -11,12 +11,12 @@
   <test_depend>ament_flake8</test_depend>
   <test_depend>ament_pep257</test_depend>
   <test_depend>python3-pytest</test_depend>
-    
+
   <depend>geometry_msgs</depend>
   <depend>sensor_msgs</depend>
   <depend>std_msgs</depend>
   <depend>visualization_msgs</depend>
-    
+
   <depend>robot_state_publisher</depend>
   <depend>joint_state_publisher</depend>
 

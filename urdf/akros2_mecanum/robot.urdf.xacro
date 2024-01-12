@@ -13,8 +13,8 @@
 </xacro:if>
 
 <!-- **** LINKS **** -->
-    
-<!-- BASE_FOOTPRINT -->    
+
+<!-- BASE_FOOTPRINT -->
 <link name="base_footprint"/>
 
 <!-- BASE_LINK -->
@@ -24,7 +24,7 @@
     <geometry>
       <mesh filename="${mesh_path}base_module.dae" />
     </geometry>
-   <material name="BaseLinkColor"/>
+    <material name="BaseLinkColor"/>
   </visual>
   <collision>
     <origin xyz="${base_offset_x/2} 0 ${base_height/2}" rpy="0 0 0" />
@@ -33,7 +33,7 @@
     </geometry>
   </collision>
 </link>
-    
+
 <!-- BASE_LINK_INERTIAL (WORKAROUND FOR KDL WHICH DOES NOT ACCEPT BASE_LINK WITH INERTIA) -->
 <link name="base_link_inertial">
   <inertial>
@@ -113,7 +113,7 @@
 
 <!-- USB CAMERA OPTICAL FRAME CAM_FRAME -->
 <link name="cam_frame"/>
-    
+
 <!-- MPU9250 IMU_LINK -->
 <link name="imu_link"/>
 
@@ -202,21 +202,21 @@
 </link>
 
 <!-- **** JOINTS **** -->
-    
+
 <!-- BASE_LINK TO BASE_FOOTPRINT -->
 <joint name="footprint_base_fixed" type="fixed">
   <parent link="base_footprint"/>
   <child link="base_link"/>
   <origin xyz="0 0 ${footprint_base_offset_z}"/>
 </joint>
-    
+
 <!-- BASE_LINK_INERTIAL TO BASE_LINK -->
 <joint name="base_inertial_fixed" type="fixed">
   <parent link="base_link"/>
   <child link="base_link_inertial"/>
   <origin xyz="0 0 0"/>
 </joint>
-    
+
 <!-- NAV_LINK TO BASE_LINK -->
 <joint name="base_nav_fixed" type="fixed">
   <parent link="base_link"/>
@@ -252,7 +252,7 @@
   <child link="cam_frame"/>
   <origin xyz="${cam_frame_offset_x} 0 0" rpy="${minus_pi_by_two} 0 ${minus_pi_by_two}"/>
 </joint>
-    
+
 <!-- IMU_LINK TO BASE_LINK -->
 <joint name="imu_base_fixed" type="fixed">
   <parent link="base_link"/>
@@ -267,7 +267,7 @@
   <origin xyz="${joint_offset_x} ${joint_offset_y} ${joint_offset_z}" rpy="0 0 0" />
   <axis xyz="0 1 0" />
 </joint>
-    
+
 <!-- WHEEL_LB TO BASE_LINK -->
 <joint name="joint_lb" type="continuous">
   <parent link="base_link" />
@@ -275,7 +275,7 @@
   <origin xyz="${-1*joint_offset_x} ${joint_offset_y} ${joint_offset_z}" rpy="0 0 0" />
   <axis xyz="0 1 0" />
 </joint>
-   
+
 <!-- WHEEL_RF TO BASE_LINK -->
 <joint name="joint_rf" type="continuous">
   <parent link="base_link" />
@@ -283,13 +283,13 @@
   <origin xyz="${joint_offset_x} ${-1*joint_offset_y} ${joint_offset_z}" rpy="0 0 0" />
   <axis xyz="0 1 0" />
 </joint>
-    
+
 <!-- WHEEL_RB TO BASE_LINK -->
 <joint name="joint_rb" type="continuous">
   <parent link="base_link" />
   <child link="wheel_rb" />
   <origin xyz="${-1*joint_offset_x} ${-1*joint_offset_y} ${joint_offset_z}" rpy="0 0 0" />
   <axis xyz="0 1 0" />
-</joint>   
+</joint>
 
 </robot>

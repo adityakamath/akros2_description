@@ -12,7 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import os
 from launch import LaunchDescription
 from launch.actions import DeclareLaunchArgument, GroupAction
 from launch.substitutions import LaunchConfiguration, PathJoinSubstitution, Command
@@ -25,27 +24,27 @@ def generate_launch_description():
     mecanum_robot_description = ParameterValue(
         Command(['xacro ', str(get_package_share_path('akros2_description') / 'urdf/akros2_mecanum/robot.urdf.xacro')]),
         value_type=str)
-    
+
     omni_robot_description = ParameterValue(
         Command(['xacro ', str(get_package_share_path('akros2_description') / 'urdf/akros2_omni/robot.urdf.xacro')]),
         value_type=str)
-    
+
     return LaunchDescription([ 
         DeclareLaunchArgument(
             name='config',
             default_value='mecanum',
             description='Select Robot Config: mecanum (4 wheeled), omni (3 wheeled)'),
-        
+
         DeclareLaunchArgument(
             name='js_ext',
             default_value='True',
             description='Enable Joint States from external nodes (like the micro-ROS node). If False, enable Joint States from the Joint State Publisher'),
-        
+
         DeclareLaunchArgument(
             name='js_topic',
             default_value='joint_states',
             description='Switch between measured (joint_states) and required (req_states) topics'),
-        
+
         GroupAction(
             condition=LaunchConfigurationEquals('config', 'mecanum'),
             actions = [
@@ -58,7 +57,7 @@ def generate_launch_description():
                     remappings=[
                         ('/joint_states', ['/', LaunchConfiguration('js_topic')])
                     ]),
-                
+
                 Node(
                     condition=UnlessCondition(LaunchConfiguration('js_ext')),
                     package='joint_state_publisher',
@@ -69,7 +68,7 @@ def generate_launch_description():
                         ('/joint_states', ['/', LaunchConfiguration('js_topic')])
                     ]),
             ]),
-        
+
         GroupAction(
             condition=LaunchConfigurationEquals('config', 'omni'),
             actions = [
@@ -82,7 +81,7 @@ def generate_launch_description():
                     remappings=[
                         ('/joint_states', ['/', LaunchConfiguration('js_topic')])
                     ]),
-                
+
                 Node(
                     condition=UnlessCondition(LaunchConfiguration('js_ext')),
                     package='joint_state_publisher',

@@ -8,7 +8,7 @@
 <gazebo reference="nav_link">
   <material>Gazebo/DarkGrey</material>
 </gazebo>
-    
+
 <gazebo reference="laser_link">
   <material>Gazebo/FlatBlack</material>
 </gazebo>
@@ -20,7 +20,7 @@
 <gazebo reference="wheel_lf">
   <material>Gazebo/DarkGrey</material>
 </gazebo>
-    
+
 <gazebo reference="wheel_lb">
   <material>Gazebo/DarkGrey</material>
 </gazebo>
@@ -32,7 +32,7 @@
 <gazebo reference="wheel_rb">
   <material>Gazebo/DarkGrey</material>
 </gazebo>
-    
+
 <gazebo reference="laser_frame">
   <sensor type="ray" name="laser">
     <pose>0 0 0 0 0 0</pose>
@@ -86,7 +86,7 @@
     </plugin>
     </sensor>
 </gazebo>
-    
+
 <gazebo>
   <plugin name="imu_plugin" filename="libgazebo_ros_imu.so">
     <alwaysOn>true</alwaysOn>
@@ -130,5 +130,5 @@
 <!--<gazebo>
   <plugin name="control" filename="libgazebo_ros_control.so"/>
 </gazebo>-->
-    
+
 </robot>
