@@ -13,8 +13,8 @@
 </xacro:if>
 
 <!-- **** LINKS **** -->
-    
-<!-- BASE_FOOTPRINT -->    
+
+<!-- BASE_FOOTPRINT -->
 <link name="base_footprint"/>
 
 <!-- BASE_LINK -->
@@ -24,44 +24,23 @@
     <geometry>
       <mesh filename="${mesh_path}base_module.dae" />
     </geometry>
-   <material name="BaseLinkColor"/>
+    <material name="BaseLinkColor"/>
   </visual>
   <collision>
-    <origin xyz="${base_offset_x/2} 0 ${base_height/2}" rpy="0 0 0" />
+    <origin xyz="0 0 ${base_center_offset_z}" rpy="0 0 0" />
     <geometry>
-      <box size="${base_length} ${base_width} ${base_height}"/>
+      <cylinder length="${base_height}" radius="${base_radius}"/>
     </geometry>
   </collision>
 </link>
-    
+
 <!-- BASE_LINK_INERTIAL (WORKAROUND FOR KDL WHICH DOES NOT ACCEPT BASE_LINK WITH INERTIA) -->
 <link name="base_link_inertial">
   <inertial>
     <origin xyz="0 0 0" rpy="0 0 0" />
     <mass value="${base_mass}"/>
-    <xacro:box_inertia m="${base_mass}" x="${base_length}" y="${base_width}" z="${base_height}"/>
+    <xacro:cylinder_inertia m="${base_mass}" r="${base_radius}" h="${base_height}"/>
   </inertial>
-</link>
-
-<!-- NAV_LINK -->
-<link name="nav_link">
-  <inertial>
-    <mass value="${nav_mass}" />
-    <xacro:box_inertia m="${nav_mass}" x="${nav_length}" y="${nav_width}" z="${nav_height}"/>
-  </inertial>
-  <visual>
-    <origin xyz="0 0 ${nav_offset_z}" rpy="0 0 0" />
-    <geometry>
-      <mesh filename="${mesh_path}navigation_module.dae" />
-    </geometry>
-    <material name="WheelsNavColor"/>
-  </visual>
-  <collision>
-    <origin xyz="0 0 ${nav_height/2}" rpy="0 0 0" />
-    <geometry>
-      <box size="${nav_length} ${nav_width} ${nav_height}"/>
-    </geometry>
-  </collision>
 </link>
 
 <!-- LD06 LASER_LINK -->
@@ -72,14 +51,14 @@
     <xacro:box_inertia m="${laser_mass}" x="${laser_length}" y="${laser_width}" z="${laser_height}"/>
   </inertial>
   <visual>
-    <origin xyz="0 0 0" rpy="0 0 ${minus_pi_by_two}" />
+    <origin xyz="0 0 0" rpy="0 0 ${-1*pi_by_two}" />
     <geometry>
       <mesh filename="${mesh_path}ld06.dae" />
     </geometry>
     <material name="LaserColor"/>
   </visual>
   <collision>
-    <origin xyz="0 0 ${laser_height/2}" rpy="0 0 ${minus_pi_by_two}" />
+    <origin xyz="0 0 ${laser_height/2}" rpy="0 0 ${-1*pi_by_two}" />
     <geometry>
       <box size="${laser_length} ${laser_width} ${laser_height}"/>
     </geometry>
@@ -88,7 +67,7 @@
 
 <!-- LASER_FRAME -->
 <link name="laser_frame"/>
-    
+
 <!-- MPU9250 IMU_LINK -->
 <link name="imu_link"/>
 
@@ -101,12 +80,12 @@
   <visual>
     <origin xyz="0 0 0" rpy="0 0 0" />
     <geometry>
-      <mesh filename="${mesh_path}wheel_f.dae" />
+      <mesh filename="${mesh_path}omniwheel.dae" />
     </geometry>
     <material name="WheelsNavColor"/>
   </visual>
   <collision>
-    <origin xyz="0 ${wheel_thickness/2} 0" rpy="${pi_by_two} 0 0" />
+    <origin xyz="${wheel_thickness/2} 0 0" rpy="0 ${pi_by_two} 0" />
     <geometry>
       <cylinder length="${wheel_thickness}" radius="${wheel_radius}"/>
     </geometry>
@@ -122,19 +101,19 @@
   <visual>
     <origin xyz="0 0 0" rpy="0 0 0" />
     <geometry>
-      <mesh filename="${mesh_path}wheel_l.dae" />
+      <mesh filename="${mesh_path}omniwheel.dae" />
     </geometry>
     <material name="WheelsNavColor"/>
   </visual>
   <collision>
-    <origin xyz="0 ${wheel_thickness/2} 0" rpy="${pi_by_two} 0 0" />
+    <origin xyz="${wheel_thickness/2} 0 0" rpy="0 ${pi_by_two} 0" />
     <geometry>
       <cylinder length="${wheel_thickness}" radius="${wheel_radius}"/>
     </geometry>
   </collision>
 </link>
 
-<!-- WHEEL RIGHT FRONT -->
+<!-- WHEEL RIGHT -->
 <link name="wheel_r">
   <inertial>
     <mass value="${wheel_mass}"/>
@@ -143,12 +122,12 @@
   <visual>
     <origin xyz="0 0 0" rpy="0 0 0" />
     <geometry>
-      <mesh filename="${mesh_path}wheel_r.dae" />
+      <mesh filename="${mesh_path}omniwheel.dae" />
     </geometry>
     <material name="WheelsNavColor"/>
   </visual>
   <collision>
-    <origin xyz="0 ${-1*(wheel_thickness/2)} 0" rpy="${pi_by_two} 0 0" />
+    <origin xyz="${wheel_thickness/2} 0 0" rpy="0 ${pi_by_two} 0" />
     <geometry>
       <cylinder length="${wheel_thickness}" radius="${wheel_radius}"/>
     </geometry>
@@ -156,34 +135,26 @@
 </link>
 
 <!-- **** JOINTS **** -->
-    
+
 <!-- BASE_LINK TO BASE_FOOTPRINT -->
 <joint name="footprint_base_fixed" type="fixed">
   <parent link="base_footprint"/>
   <child link="base_link"/>
   <origin xyz="0 0 ${footprint_base_offset_z}"/>
 </joint>
-    
+
 <!-- BASE_LINK_INERTIAL TO BASE_LINK -->
 <joint name="base_inertial_fixed" type="fixed">
   <parent link="base_link"/>
   <child link="base_link_inertial"/>
   <origin xyz="0 0 0"/>
 </joint>
-    
-<!-- NAV_LINK TO BASE_LINK -->
-<joint name="base_nav_fixed" type="fixed">
-  <parent link="base_link"/>
-  <child link="nav_link"/>
-  <origin xyz="0 0 ${base_height}"/>
-  <axis xyz="0 0 0"/>
-</joint>
 
-<!-- LASER_LINK TO NAV_LINK -->
-<joint name="nav_laser_fixed" type="fixed">
-  <parent link="nav_link"/>
+<!-- LASER_LINK TO BASE_LINK -->
+<joint name="base_laser_fixed" type="fixed">
+  <parent link="base_link"/>
   <child link="laser_link"/>
-  <origin xyz="${nav_laser_offset_x} 0 ${nav_height/2}"/>
+  <origin xyz="${base_laser_offset_x} 0 ${base_laser_offset_z}"/>
 </joint>
 
 <!-- LASER_FRAME TO LASER_LINK -->
@@ -192,36 +163,36 @@
   <child link="laser_frame"/>
   <origin xyz="0 0 ${laser_frame_offset_z}"/>
 </joint>
-    
+
 <!-- IMU_LINK TO BASE_LINK -->
 <joint name="imu_base_fixed" type="fixed">
   <parent link="base_link"/>
   <child link="imu_link"/>
-  <origin xyz="${imu_offset_x} 0 ${imu_offset_z}"/>
+  <origin xyz="0 0 ${imu_offset_z}"/>
 </joint>
 
 <!-- WHEEL_F TO BASE_LINK -->
 <joint name="joint_f" type="continuous">
   <parent link="base_link" />
   <child link="wheel_f" />
-  <origin xyz="${joint_offset_x} ${joint_offset_y} ${joint_offset_z}" rpy="0 0 0" />
-  <axis xyz="0 1 0" />
+  <origin xyz="${joint_f_offset_x} 0 ${joint_offset_z}" rpy="0 0 0" />
+  <axis xyz="1 0 0" />
 </joint>
-    
+
 <!-- WHEEL_L TO BASE_LINK -->
 <joint name="joint_l" type="continuous">
   <parent link="base_link" />
   <child link="wheel_l" />
-  <origin xyz="${-1*joint_offset_x} ${joint_offset_y} ${joint_offset_z}" rpy="0 0 0" />
-  <axis xyz="0 1 0" />
+  <origin xyz="${joint_lr_offset_x} ${joint_lr_offset_y} ${joint_offset_z}" rpy="0 0 ${2*pi_by_three}" />
+  <axis xyz="1 0 0" />
 </joint>
-   
+
 <!-- WHEEL_R TO BASE_LINK -->
 <joint name="joint_r" type="continuous">
   <parent link="base_link" />
   <child link="wheel_r" />
-  <origin xyz="${joint_offset_x} ${-1*joint_offset_y} ${joint_offset_z}" rpy="0 0 0" />
-  <axis xyz="0 1 0" />
-</joint> 
+  <origin xyz="${joint_lr_offset_x} ${-1*joint_lr_offset_y} ${joint_offset_z}" rpy="0 0 ${-2*pi_by_three}" />
+  <axis xyz="1 0 0" />
+</joint>
 
 </robot>

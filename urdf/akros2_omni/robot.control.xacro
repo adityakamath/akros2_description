@@ -12,7 +12,7 @@
     <mechanicalReduction>1</mechanicalReduction>
   </actuator>
 </transmission>
- 
+
 <!-- WHEEL_L TRANSMISSION -->
 <transmission name="trans_l">
   <type>transmission_interface/SimpleTransmission</type>
@@ -36,5 +36,5 @@
     <mechanicalReduction>1</mechanicalReduction>
   </actuator>
 </transmission>
-    
+
 </robot>

@@ -3,7 +3,6 @@
 <!-- All values below are based on CAD model (Fusion 360). 2mm added on each side (4mm total) for length and width (but not height) as padding. -->
 
 <xacro:property name="pi_by_two" value="1.5707963" />
-<xacro:property name="minus_pi_by_two" value="-1.5707963" />
 
 <xacro:property name="base_mass" value="2.0" /> <!-- Guesstimate, needs to be measured -->
 <xacro:property name="base_length" value="0.21038" /> <!-- Actual length without padding = 0.20638. Change to 0.21038 to include screw heads in collision (without padding). -->

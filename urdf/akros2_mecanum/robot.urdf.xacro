@@ -72,14 +72,14 @@
     <xacro:box_inertia m="${laser_mass}" x="${laser_length}" y="${laser_width}" z="${laser_height}"/>
   </inertial>
   <visual>
-    <origin xyz="0 0 0" rpy="0 0 ${minus_pi_by_two}" />
+    <origin xyz="0 0 0" rpy="0 0 ${-1*pi_by_two}" />
     <geometry>
       <mesh filename="${mesh_path}ld06.dae" />
     </geometry>
     <material name="SensorColor"/>
   </visual>
   <collision>
-    <origin xyz="0 0 ${laser_height/2}" rpy="0 0 ${minus_pi_by_two}" />
+    <origin xyz="0 0 ${laser_height/2}" rpy="0 0 ${-1*pi_by_two}" />
     <geometry>
       <box size="${laser_length} ${laser_width} ${laser_height}"/>
     </geometry>
@@ -250,7 +250,7 @@
 <joint name="cam_frame_fixed" type="fixed">
   <parent link="cam_link"/>
   <child link="cam_frame"/>
-  <origin xyz="${cam_frame_offset_x} 0 0" rpy="${minus_pi_by_two} 0 ${minus_pi_by_two}"/>
+  <origin xyz="${cam_frame_offset_x} 0 0" rpy="${-1*pi_by_two} 0 ${-1*pi_by_two}"/>
 </joint>
 
 <!-- IMU_LINK TO BASE_LINK -->
