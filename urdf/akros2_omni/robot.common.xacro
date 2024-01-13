@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <robot name="omni_common" xmlns:xacro="http://ros.org/wiki/xacro">
-<!-- All values below are based on CAD model (Fusion 360). 2mm added on each side (4mm total) for length and width (but not height) as padding. -->
+<!-- All values below are based on the CAD model (Fusion 360) -->
 
 <xacro:property name="pi_by_two" value="1.5707963" />
 <xacro:property name="pi_by_three" value="1.0471975"/>
 
 <xacro:property name="base_mass" value="2.0" /> <!-- Guesstimate, needs to be measured -->
-<xacro:property name="base_height" value="0.1673" />
+<xacro:property name="base_height" value="0.1651" />
 <xacro:property name="base_radius" value="0.105" /> <!-- Distance from the motor shaft to the vertical axis -->
 
 <xacro:property name="imu_offset_z" value="0.063003" />
@@ -20,7 +20,7 @@
 <xacro:property name="wheel_mass" value="0.075" /> <!-- Guesstimate, needs to be measured -->
 <xacro:property name="wheel_thickness" value="0.026" />
 
-<xacro:property name="base_center_offset_z" value="0.0170" />
+<xacro:property name="base_center_offset_z" value="0.0159" />
 <xacro:property name="footprint_base_offset_z" value="0.085597" /> <!-- CAD offset, Actual offset ~= 0.083597 -->
 <xacro:property name="base_laser_offset_x" value="0.034435" />
 <xacro:property name="base_laser_offset_z" value="0.076503" />
