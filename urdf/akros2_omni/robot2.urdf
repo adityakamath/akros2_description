@@ -143,7 +143,7 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://akros2_description/meshes/akros2_omni/base_module.dae"/>
+        <mesh filename="base_module.dae"/>
       </geometry>
       <material name="BaseLinkColor"/>
     </visual>
@@ -172,7 +172,7 @@
     <visual>
       <origin rpy="0 0 -1.5707963" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://akros2_description/meshes/akros2_omni/ld06.dae"/>
+        <mesh filename="ld06.dae"/>
       </geometry>
       <material name="LaserColor"/>
     </visual>
@@ -196,7 +196,7 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://akros2_description/meshes/akros2_omni/omniwheel.dae"/>
+        <mesh filename="omniwheel.dae"/>
       </geometry>
       <material name="WheelsNavColor"/>
     </visual>
@@ -216,7 +216,7 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://akros2_description/meshes/akros2_omni/omniwheel.dae"/>
+        <mesh filename="omniwheel.dae"/>
       </geometry>
       <material name="WheelsNavColor"/>
     </visual>
@@ -236,7 +236,7 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://akros2_description/meshes/akros2_omni/omniwheel.dae"/>
+        <mesh filename="omniwheel.dae"/>
       </geometry>
       <material name="WheelsNavColor"/>
     </visual>

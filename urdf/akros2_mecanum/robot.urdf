@@ -4,7 +4,7 @@
 <!-- |    EDITING THIS FILE BY HAND IS NOT RECOMMENDED                                 | -->
 <!-- =================================================================================== -->
 <robot name="akros2_mecanum">
-  <!-- All values below are based on CAD model (Fusion 360). 2mm added on each side (4mm total) for length and width (but not height) as padding. -->
+  <!-- All values below are based on the CAD model (Fusion 360). 2mm added on each side (4mm total) for length and width (but not height) as padding. -->
   <!-- Actual thickness = 0.034, CAD thickness = 0.0315 -->
   <material name="SensorColor">
     <color rgba="0.2 0.2 0.2 1"/>
@@ -130,10 +130,10 @@
           <far>8.0</far>
         </clip>
       </camera>
-      <plugin name="gazebo_cam_controller" filename="libgazebo_ros_camera.so">
+      <plugin filename="libgazebo_ros_camera.so" name="gazebo_cam_controller">
         <frame_name>cam_frame</frame_name>
       </plugin>
-      </sensor>
+    </sensor>
   </gazebo>
   <gazebo>
     <plugin filename="libgazebo_ros_imu.so" name="imu_plugin">
