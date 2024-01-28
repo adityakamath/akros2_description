@@ -28,12 +28,16 @@ def generate_launch_description():
     omni_robot_description = ParameterValue(
         Command(['xacro ', str(get_package_share_path('akros2_description') / 'urdf/akros2_omni/robot.urdf.xacro')]),
         value_type=str)
+        
+    diff_robot_description = ParameterValue(
+        Command(['xacro ', str(get_package_share_path('akros2_description') / 'urdf/akros2_diff/robot.urdf.xacro')]),
+        value_type=str)
 
     return LaunchDescription([ 
         DeclareLaunchArgument(
             name='config',
             default_value='mecanum',
-            description='Select Robot Config: mecanum (4 wheeled), omni (3 wheeled)'),
+            description='Select Robot Config: mecanum (4 wheeled), omni (3 wheeled), diff (2 wheeled)'),
 
         DeclareLaunchArgument(
             name='js_ext',
@@ -88,6 +92,30 @@ def generate_launch_description():
                     executable='joint_state_publisher',
                     name='joint_state_publisher',
                     parameters=[{'source_list': ['joint_f', 'joint_l', 'joint_r']}],
+                    remappings=[
+                        ('/joint_states', ['/', LaunchConfiguration('js_topic')])
+                    ]),
+            ]),
+            
+        GroupAction(
+            condition=LaunchConfigurationEquals('config', 'diff'),
+            actions = [
+                Node(
+                    package='robot_state_publisher',
+                    executable='robot_state_publisher',
+                    name='robot_state_publisher',
+                    output='screen',
+                    parameters=[{'robot_description': diff_robot_description}],
+                    remappings=[
+                        ('/joint_states', ['/', LaunchConfiguration('js_topic')])
+                    ]),
+
+                Node(
+                    condition=UnlessCondition(LaunchConfiguration('js_ext')),
+                    package='joint_state_publisher',
+                    executable='joint_state_publisher',
+                    name='joint_state_publisher',
+                    parameters=[{'source_list': ['joint_l', 'joint_r']}],
                     remappings=[
                         ('/joint_states', ['/', LaunchConfiguration('js_topic')])
                     ]),

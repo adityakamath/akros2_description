@@ -17,6 +17,8 @@ setup(
         (os.path.join('share', package_name, 'meshes', 'akros2_mecanum'), glob('meshes/akros2_mecanum/*.dae')),
         (os.path.join('share', package_name, 'urdf', 'akros2_omni'), glob('urdf/akros2_omni/*.xacro')),
         (os.path.join('share', package_name, 'meshes', 'akros2_omni'), glob('meshes/akros2_omni/*.dae')),
+        (os.path.join('share', package_name, 'urdf', 'akros2_diff'), glob('urdf/akros2_diff/*.xacro')),
+        (os.path.join('share', package_name, 'meshes', 'akros2_diff'), glob('meshes/akros2_diff/*.dae')),
     ],
     install_requires=['setuptools'],
     zip_safe=True,
