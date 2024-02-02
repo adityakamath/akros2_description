@@ -362,7 +362,7 @@
   <joint name="base_footprint_fixed" type="fixed">
     <parent link="base_link"/>
     <child link="base_footprint"/>
-    <origin xyz="0 0 0.017877"/>
+    <origin xyz="0 0 -0.017877"/>
   </joint>
   <!-- NAV_LINK TO BASE_LINK -->
   <joint name="base_nav_fixed" type="fixed">
