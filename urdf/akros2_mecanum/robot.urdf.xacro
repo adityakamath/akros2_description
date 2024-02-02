@@ -203,18 +203,18 @@
 
 <!-- **** JOINTS **** -->
 
-<!-- BASE_FOOTPRINT TO BASE_LINK -->
-<joint name="base_footprint_fixed" type="fixed">
-  <parent link="base_link"/>
-  <child link="base_footprint"/>
-  <origin xyz="0 0 ${footprint_base_offset_z}"/>
-</joint>
-
 <!-- BASE_LINK_INERTIAL TO BASE_LINK -->
 <joint name="base_inertial_fixed" type="fixed">
   <parent link="base_link"/>
   <child link="base_link_inertial"/>
   <origin xyz="0 0 0"/>
+</joint>
+
+<!-- BASE_FOOTPRINT TO BASE_LINK -->
+<joint name="base_footprint_fixed" type="fixed">
+  <parent link="base_link"/>
+  <child link="base_footprint"/>
+  <origin xyz="0 0 ${footprint_base_offset_z}"/>
 </joint>
 
 <!-- NAV_LINK TO BASE_LINK -->
