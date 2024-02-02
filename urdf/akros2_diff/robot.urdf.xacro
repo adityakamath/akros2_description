@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<robot name="akros2_omni" xmlns:xacro="http://ros.org/wiki/xacro">
-<xacro:include filename="$(find akros2_description)/urdf/akros2_omni/robot.common.xacro"/>
-<xacro:include filename="$(find akros2_description)/urdf/akros2_omni/robot.control.xacro"/>
-<xacro:include filename="$(find akros2_description)/urdf/akros2_omni/robot.gazebo.xacro"/>
+<robot name="akros2_diff" xmlns:xacro="http://ros.org/wiki/xacro">
+<xacro:include filename="$(find akros2_description)/urdf/akros2_diff/robot.common.xacro"/>
+<xacro:include filename="$(find akros2_description)/urdf/akros2_diff/robot.control.xacro"/>
+<xacro:include filename="$(find akros2_description)/urdf/akros2_diff/robot.gazebo.xacro"/>
 
-<xacro:arg name="mesh_path" default="package://akros2_description/meshes/akros2_omni/" /> <!-- HTTPS URL also works here -->
+<xacro:arg name="mesh_path" default="package://akros2_description/meshes/akros2_diff/" /> <!-- HTTPS URL also works here -->
 <xacro:arg name="nopath" default="false" />
 <xacro:property name="mesh_path" value="$(arg mesh_path)" />
 
@@ -43,54 +43,8 @@
 <!-- BASE_FOOTPRINT -->
 <link name="base_footprint"/>
 
-<!-- LD06 LASER_LINK -->
-<link name="laser_link">
-  <inertial>
-    <origin xyz="0 0 0" rpy="0 0 0" />
-    <mass value="${laser_mass}" />
-    <xacro:box_inertia m="${laser_mass}" x="${laser_length}" y="${laser_width}" z="${laser_height}"/>
-  </inertial>
-  <visual>
-    <origin xyz="0 0 0" rpy="0 0 ${-1*pi_by_two}" />
-    <geometry>
-      <mesh filename="${mesh_path}ld06.dae" />
-    </geometry>
-    <material name="LaserColor"/>
-  </visual>
-  <collision>
-    <origin xyz="0 0 ${laser_height/2}" rpy="0 0 ${-1*pi_by_two}" />
-    <geometry>
-      <box size="${laser_length} ${laser_width} ${laser_height}"/>
-    </geometry>
-  </collision>
-</link>
-
-<!-- LASER_FRAME -->
-<link name="laser_frame"/>
-
-<!-- MPU9250 IMU_LINK -->
+<!-- BNO055 IMU_LINK -->
 <link name="imu_link"/>
-
-<!-- WHEEL FRONT -->
-<link name="wheel_f">
-  <inertial>
-    <mass value="${wheel_mass}"/>
-    <xacro:cylinder_inertia m="${wheel_mass}" r="${wheel_radius}" h="${wheel_thickness}"/>
-  </inertial>
-  <visual>
-    <origin xyz="0 0 0" rpy="0 0 0" />
-    <geometry>
-      <mesh filename="${mesh_path}omniwheel.dae" />
-    </geometry>
-    <material name="WheelsNavColor"/>
-  </visual>
-  <collision>
-    <origin xyz="${wheel_thickness/2} 0 0" rpy="0 ${pi_by_two} 0" />
-    <geometry>
-      <cylinder length="${wheel_thickness}" radius="${wheel_radius}"/>
-    </geometry>
-  </collision>
-</link>
 
 <!-- WHEEL LEFT -->
 <link name="wheel_l">
@@ -136,13 +90,6 @@
 
 <!-- **** JOINTS **** -->
 
-<!-- BASE_LINK TO BASE_FOOTPRINT -->
-<joint name="footprint_base_fixed" type="fixed">
-  <parent link="base_footprint"/>
-  <child link="base_link"/>
-  <origin xyz="0 0 ${footprint_base_offset_z}"/>
-</joint>
-
 <!-- BASE_LINK_INERTIAL TO BASE_LINK -->
 <joint name="base_inertial_fixed" type="fixed">
   <parent link="base_link"/>
@@ -150,18 +97,11 @@
   <origin xyz="0 0 0"/>
 </joint>
 
-<!-- LASER_LINK TO BASE_LINK -->
-<joint name="base_laser_fixed" type="fixed">
+<!-- BASE_FOOTPRINT TO BASE_LINK -->
+<joint name="base_footprint_fixed" type="fixed">
   <parent link="base_link"/>
-  <child link="laser_link"/>
-  <origin xyz="${base_laser_offset_x} 0 ${base_laser_offset_z}"/>
-</joint>
-
-<!-- LASER_FRAME TO LASER_LINK -->
-<joint name="laser_frame_fixed" type="fixed">
-  <parent link="laser_link"/>
-  <child link="laser_frame"/>
-  <origin xyz="0 0 ${laser_frame_offset_z}"/>
+  <child link="base_footprint"/>
+  <origin xyz="0 0 ${footprint_base_offset_z}"/>
 </joint>
 
 <!-- IMU_LINK TO BASE_LINK -->
@@ -169,14 +109,6 @@
   <parent link="base_link"/>
   <child link="imu_link"/>
   <origin xyz="0 0 ${imu_offset_z}"/>
-</joint>
-
-<!-- WHEEL_F TO BASE_LINK -->
-<joint name="joint_f" type="continuous">
-  <parent link="base_link" />
-  <child link="wheel_f" />
-  <origin xyz="${joint_f_offset_x} 0 ${joint_offset_z}" rpy="0 0 0" />
-  <axis xyz="1 0 0" />
 </joint>
 
 <!-- WHEEL_L TO BASE_LINK -->
