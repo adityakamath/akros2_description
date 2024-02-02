@@ -1,17 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<robot name="omni_control" xmlns:xacro="http://ros.org/wiki/xacro">
-
-<!-- WHEEL_F TRANSMISSION -->
-<transmission name="trans_f">
-  <type>transmission_interface/SimpleTransmission</type>
-  <joint name="joint_f">
-    <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
-  </joint>
-  <actuator name="motor_f">
-    <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
-    <mechanicalReduction>1</mechanicalReduction>
-  </actuator>
-</transmission>
+<robot name="diff_control" xmlns:xacro="http://ros.org/wiki/xacro">
 
 <!-- WHEEL_L TRANSMISSION -->
 <transmission name="trans_l">
