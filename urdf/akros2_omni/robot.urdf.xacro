@@ -14,9 +14,6 @@
 
 <!-- **** LINKS **** -->
 
-<!-- BASE_FOOTPRINT -->
-<link name="base_footprint"/>
-
 <!-- BASE_LINK -->
 <link name="base_link">
   <visual>
@@ -43,6 +40,9 @@
   </inertial>
 </link>
 
+<!-- BASE_FOOTPRINT -->
+<link name="base_footprint"/>
+
 <!-- LD06 LASER_LINK -->
 <link name="laser_link">
   <inertial>
@@ -68,7 +68,7 @@
 <!-- LASER_FRAME -->
 <link name="laser_frame"/>
 
-<!-- MPU9250 IMU_LINK -->
+<!-- BNO085 IMU_LINK -->
 <link name="imu_link"/>
 
 <!-- WHEEL FRONT -->
@@ -136,18 +136,18 @@
 
 <!-- **** JOINTS **** -->
 
-<!-- BASE_LINK TO BASE_FOOTPRINT -->
-<joint name="footprint_base_fixed" type="fixed">
-  <parent link="base_footprint"/>
-  <child link="base_link"/>
-  <origin xyz="0 0 ${footprint_base_offset_z}"/>
-</joint>
-
 <!-- BASE_LINK_INERTIAL TO BASE_LINK -->
 <joint name="base_inertial_fixed" type="fixed">
   <parent link="base_link"/>
   <child link="base_link_inertial"/>
   <origin xyz="0 0 0"/>
+</joint>
+
+<!-- BASE_FOOTPRINT TO BASE_LINK -->
+<joint name="base_footprint_fixed" type="fixed">
+  <parent link="base_link"/>
+  <child link="base_footprint"/>
+  <origin xyz="0 0 ${footprint_base_offset_z}"/>
 </joint>
 
 <!-- LASER_LINK TO BASE_LINK -->
