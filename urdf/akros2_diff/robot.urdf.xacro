@@ -14,9 +14,6 @@
 
 <!-- **** LINKS **** -->
 
-<!-- BASE_FOOTPRINT -->
-<link name="base_footprint"/>
-
 <!-- BASE_LINK -->
 <link name="base_link">
   <visual>
@@ -42,6 +39,9 @@
     <xacro:cylinder_inertia m="${base_mass}" r="${base_radius}" h="${base_height}"/>
   </inertial>
 </link>
+
+<!-- BASE_FOOTPRINT -->
+<link name="base_footprint"/>
 
 <!-- LD06 LASER_LINK -->
 <link name="laser_link">
