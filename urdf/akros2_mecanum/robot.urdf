@@ -169,7 +169,7 @@
       <odometryTopic>odom</odometryTopic>
       <odometryFrame>odom</odometryFrame>
       <odometryRate>100.0</odometryRate>
-      <robotBaseFrame>base_footprint</robotBaseFrame>
+      <robotBaseFrame>base_link</robotBaseFrame>
       <publishTF>false</publishTF>
     </plugin>
   </gazebo>
@@ -177,8 +177,6 @@
   <plugin name="control" filename="libgazebo_ros_control.so"/>
 </gazebo>-->
   <!-- **** LINKS **** -->
-  <!-- BASE_FOOTPRINT -->
-  <link name="base_footprint"/>
   <!-- BASE_LINK -->
   <link name="base_link">
     <visual>
@@ -203,6 +201,8 @@
       <inertia ixx="0.0058205416666666674" ixy="0" ixz="0" iyy="0.009010124066666667" iyz="0" izz="0.009010124066666667"/>
     </inertial>
   </link>
+  <!-- BASE_FOOTPRINT -->
+  <link name="base_footprint"/>
   <!-- NAV_LINK -->
   <link name="nav_link">
     <inertial>
@@ -352,10 +352,10 @@
     </collision>
   </link>
   <!-- **** JOINTS **** -->
-  <!-- BASE_LINK TO BASE_FOOTPRINT -->
-  <joint name="footprint_base_fixed" type="fixed">
-    <parent link="base_footprint"/>
-    <child link="base_link"/>
+  <!-- BASE_FOOTPRINT TO BASE_LINK -->
+  <joint name="base_footprint_fixed" type="fixed">
+    <parent link="base_link"/>
+    <child link="base_footprint"/>
     <origin xyz="0 0 0.017877"/>
   </joint>
   <!-- BASE_LINK_INERTIAL TO BASE_LINK -->
