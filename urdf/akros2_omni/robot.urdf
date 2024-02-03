@@ -185,7 +185,7 @@
   </link>
   <!-- LASER_FRAME -->
   <link name="laser_frame"/>
-  <!-- MPU9250 IMU_LINK -->
+  <!-- BNO085 IMU_LINK -->
   <link name="imu_link"/>
   <!-- WHEEL FRONT -->
   <link name="wheel_f">
