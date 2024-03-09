@@ -4,9 +4,9 @@
 <xacro:include filename="$(find akros2_description)/urdf/akros2_omni/robot.control.xacro"/>
 <xacro:include filename="$(find akros2_description)/urdf/akros2_omni/robot.gazebo.xacro"/>
 
-<xacro:arg name="mesh_path" default="package://akros2_description/meshes/akros2_omni/" /> <!-- HTTPS URL also works here -->
+<xacro:arg name="mesh_path_omni" default="package://akros2_description/meshes/akros2_omni/" /> <!-- HTTPS URL also works here -->
 <xacro:arg name="nopath" default="false" />
-<xacro:property name="mesh_path" value="$(arg mesh_path)" />
+<xacro:property name="mesh_path" value="$(arg mesh_path_omni)" />
 
 <xacro:if value="$(arg nopath)">
   <xacro:property name="mesh_path" value="" />
