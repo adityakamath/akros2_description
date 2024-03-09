@@ -19,7 +19,7 @@
   <visual>
     <origin xyz="0 0 0" rpy="0 0 0" />
     <geometry>
-      <mesh filename="${mesh_path}base_module.dae" />
+      <mesh filename="${mesh_path}base_module.stl" />
     </geometry>
     <material name="BaseLinkColor"/>
   </visual>
@@ -52,7 +52,7 @@
   <visual>
     <origin xyz="0 0 ${nav_offset_z}" rpy="0 0 0" />
     <geometry>
-      <mesh filename="${mesh_path}navigation_module.dae" />
+      <mesh filename="${mesh_path}navigation_module.stl" />
     </geometry>
     <material name="WheelsNavColor"/>
   </visual>
@@ -74,7 +74,7 @@
   <visual>
     <origin xyz="0 0 0" rpy="0 0 ${-1*pi_by_two}" />
     <geometry>
-      <mesh filename="${mesh_path}ld06.dae" />
+      <mesh filename="${mesh_path}ld06.stl" />
     </geometry>
     <material name="SensorColor"/>
   </visual>
@@ -99,7 +99,7 @@
   <visual>
     <origin xyz="0 0 0" rpy="0 0 0" />
     <geometry>
-      <mesh filename="${mesh_path}cam_module.dae" />
+      <mesh filename="${mesh_path}cam_module.stl" />
     </geometry>
     <material name="SensorColor"/>
   </visual>
@@ -126,7 +126,7 @@
   <visual>
     <origin xyz="0 0 0" rpy="0 0 0" />
     <geometry>
-      <mesh filename="${mesh_path}wheel_lf.dae" />
+      <mesh filename="${mesh_path}wheel_lf.stl" />
     </geometry>
     <material name="WheelsNavColor"/>
   </visual>
@@ -147,7 +147,7 @@
   <visual>
     <origin xyz="0 0 0" rpy="0 0 0" />
     <geometry>
-      <mesh filename="${mesh_path}wheel_lb.dae" />
+      <mesh filename="${mesh_path}wheel_lb.stl" />
     </geometry>
     <material name="WheelsNavColor"/>
   </visual>
@@ -168,7 +168,7 @@
   <visual>
     <origin xyz="0 0 0" rpy="0 0 0" />
     <geometry>
-      <mesh filename="${mesh_path}wheel_rf.dae" />
+      <mesh filename="${mesh_path}wheel_rf.stl" />
     </geometry>
     <material name="WheelsNavColor"/>
   </visual>
@@ -189,7 +189,7 @@
   <visual>
     <origin xyz="0 0 0" rpy="0 0 0" />
     <geometry>
-      <mesh filename="${mesh_path}wheel_rb.dae" />
+      <mesh filename="${mesh_path}wheel_rb.stl" />
     </geometry>
     <material name="WheelsNavColor"/>
   </visual>
