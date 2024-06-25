@@ -19,7 +19,7 @@
   <visual>
     <origin xyz="0 0 0" rpy="0 0 0" />
     <geometry>
-      <mesh filename="${mesh_path}base_module.dae" />
+      <mesh filename="${mesh_path}base_module.stl" />
     </geometry>
     <material name="BaseLinkColor"/>
   </visual>
@@ -53,7 +53,7 @@
   <visual>
     <origin xyz="0 0 0" rpy="0 0 ${-1*pi_by_two}" />
     <geometry>
-      <mesh filename="${mesh_path}ld06.dae" />
+      <mesh filename="${mesh_path}ld06.stl" />
     </geometry>
     <material name="LaserColor"/>
   </visual>
@@ -80,7 +80,7 @@
   <visual>
     <origin xyz="0 0 0" rpy="0 0 0" />
     <geometry>
-      <mesh filename="${mesh_path}omniwheel.dae" />
+      <mesh filename="${mesh_path}omniwheel.stl" />
     </geometry>
     <material name="WheelsNavColor"/>
   </visual>
@@ -101,7 +101,7 @@
   <visual>
     <origin xyz="0 0 0" rpy="0 0 0" />
     <geometry>
-      <mesh filename="${mesh_path}omniwheel.dae" />
+      <mesh filename="${mesh_path}omniwheel.stl" />
     </geometry>
     <material name="WheelsNavColor"/>
   </visual>
@@ -122,7 +122,7 @@
   <visual>
     <origin xyz="0 0 0" rpy="0 0 0" />
     <geometry>
-      <mesh filename="${mesh_path}omniwheel.dae" />
+      <mesh filename="${mesh_path}omniwheel.stl" />
     </geometry>
     <material name="WheelsNavColor"/>
   </visual>

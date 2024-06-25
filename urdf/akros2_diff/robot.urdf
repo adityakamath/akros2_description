@@ -93,7 +93,7 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://akros2_description/meshes/akros2_diff/base_module.dae"/>
+        <mesh filename="package://akros2_description/meshes/akros2_diff/base_module.stl"/>
       </geometry>
       <material name="BaseLinkColor"/>
     </visual>
@@ -125,7 +125,7 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://akros2_description/meshes/akros2_diff/omniwheel.dae"/>
+        <mesh filename="package://akros2_description/meshes/akros2_diff/wheel.stl"/>
       </geometry>
       <material name="WheelsNavColor"/>
     </visual>
@@ -145,7 +145,7 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://akros2_description/meshes/akros2_diff/omniwheel.dae"/>
+        <mesh filename="package://akros2_description/meshes/akros2_diff/wheel.stl"/>
       </geometry>
       <material name="WheelsNavColor"/>
     </visual>

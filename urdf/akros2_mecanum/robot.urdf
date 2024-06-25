@@ -182,7 +182,7 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://akros2_description/meshes/akros2_mecanum/base_module.dae"/>
+        <mesh filename="package://akros2_description/meshes/akros2_mecanum/base_module.stl"/>
       </geometry>
       <material name="BaseLinkColor"/>
     </visual>
@@ -212,7 +212,7 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 -0.099"/>
       <geometry>
-        <mesh filename="package://akros2_description/meshes/akros2_mecanum/navigation_module.dae"/>
+        <mesh filename="package://akros2_description/meshes/akros2_mecanum/navigation_module.stl"/>
       </geometry>
       <material name="WheelsNavColor"/>
     </visual>
@@ -233,7 +233,7 @@
     <visual>
       <origin rpy="0 0 -1.5707963" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://akros2_description/meshes/akros2_mecanum/ld06.dae"/>
+        <mesh filename="package://akros2_description/meshes/akros2_mecanum/ld06.stl"/>
       </geometry>
       <material name="SensorColor"/>
     </visual>
@@ -256,7 +256,7 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://akros2_description/meshes/akros2_mecanum/cam_module.dae"/>
+        <mesh filename="package://akros2_description/meshes/akros2_mecanum/cam_module.stl"/>
       </geometry>
       <material name="SensorColor"/>
     </visual>
@@ -280,7 +280,7 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://akros2_description/meshes/akros2_mecanum/wheel_lf.dae"/>
+        <mesh filename="package://akros2_description/meshes/akros2_mecanum/wheel_lf.stl"/>
       </geometry>
       <material name="WheelsNavColor"/>
     </visual>
@@ -300,7 +300,7 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://akros2_description/meshes/akros2_mecanum/wheel_lb.dae"/>
+        <mesh filename="package://akros2_description/meshes/akros2_mecanum/wheel_lb.stl"/>
       </geometry>
       <material name="WheelsNavColor"/>
     </visual>
@@ -320,7 +320,7 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://akros2_description/meshes/akros2_mecanum/wheel_rf.dae"/>
+        <mesh filename="package://akros2_description/meshes/akros2_mecanum/wheel_rf.stl"/>
       </geometry>
       <material name="WheelsNavColor"/>
     </visual>
@@ -340,7 +340,7 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://akros2_description/meshes/akros2_mecanum/wheel_rb.dae"/>
+        <mesh filename="package://akros2_description/meshes/akros2_mecanum/wheel_rb.stl"/>
       </geometry>
       <material name="WheelsNavColor"/>
     </visual>
