@@ -1,4 +1,7 @@
 # akros2_description
+![](https://img.shields.io/badge/ROS%202%20Humble-Ubuntu%2022.04-blue) ![GitHub License](https://img.shields.io/github/license/adityakamath/akros2_description)
+ ![X (formerly Twitter) Follow](https://img.shields.io/twitter/follow/kamathsblog)
+ 
 Package with AKROS2 description files for different configurations - Mecanum Drive (4 wheeled), Omni-Wheel Drive (3 wheeled), Differential Drive (2 wheeled)
 
 * Publishes the robot description using [robot_state_publisher](https://github.com/ros/robot_state_publisher) and publishes the corresponding joint states using [joint_state_publisher](https://github.com/ros/joint_state_publisher).
